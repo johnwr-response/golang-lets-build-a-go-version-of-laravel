@@ -34,7 +34,7 @@
     - Sending email via SMTP, SendGrid, MailGun and Sparkpost
     - Remember me and password resets for user authentication
 ### A bit about me
-
+### How to ask for help
 
 
 
