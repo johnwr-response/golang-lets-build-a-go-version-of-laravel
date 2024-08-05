@@ -35,7 +35,13 @@
     - Remember me and password resets for user authentication
 ### A bit about me
 ### How to ask for help
-
+### Install Go
+- Download Go [here](https://go.dev/dl/)
+- WinGet
+  - Install: ```winget install --id GoLang.Go```
+  - Upgrade: ```winget upgrade --id GoLang.Go```
+- Verify  
+  ```go version```
 
 
 
