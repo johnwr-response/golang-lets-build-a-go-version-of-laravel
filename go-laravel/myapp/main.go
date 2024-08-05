@@ -10,4 +10,6 @@ func main() {
 	fmt.Println(result)
 	result = celeritas.TestFunc2(2, 1)
 	fmt.Println(result)
+	result = celeritas.TestFunc3(2, 2)
+	fmt.Println(result)
 }

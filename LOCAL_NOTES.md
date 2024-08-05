@@ -85,9 +85,17 @@
   go run .
   cd ..
   ```
-
-
-
+### Keeping our application and package in sync with Make
+  ```shell
+  ni myapp/Makefile -type file
+  ni Makefile -type file
+  make build
+  make clean
+  make start
+  make stop
+  make restart
+  make test
+  ```
 
 
 
