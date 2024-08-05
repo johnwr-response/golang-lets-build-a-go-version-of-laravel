@@ -54,6 +54,8 @@
 - GoLand
   - Install using toolbox: ```winget install --id JetBrains.Toolbox```
   - Install directly: ```winget install --id JetBrains.GoLand```
+### Install Make
+- Install: ```winget install -e --id GnuWin32.Make```
 
 
 
