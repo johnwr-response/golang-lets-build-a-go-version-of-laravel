@@ -57,16 +57,42 @@
 ### Install Make
 - Install: ```winget install -e --id GnuWin32.Make```
 
-
-
-
-
-
-
-
-
-
 ## Getting Started with the Celeritas Module
+### Setting up our project structure
+- Create root folders for entire app
+  ```shell
+  md go-laravel
+  cd go-laravel
+  ```
+- Create files and folders
+  ```shell
+  md celeritas
+  md myapp
+  ```
+- Initialize
+  ```shell
+  cd celeritas
+  go mod init github.com/johnwr-response/celeritas
+  cd ..
+  md myapp
+  cd myapp
+  go mod init myapp
+  cd ..
+  ni celeritas/celeritas.go -type file -Value "package celeritas`n`n"
+  ni myapp/main.go -type file -Value "package main`n`n"
+  cd myapp
+  go get github.com/johnwr-response/celeritas
+  go run .
+  cd ..
+  ```
+
+
+
+
+
+
+
+
 ## Rendering Pages
 ## Testing
 ## Sessions

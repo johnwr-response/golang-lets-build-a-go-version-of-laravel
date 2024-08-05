@@ -67,3 +67,6 @@ The key features we'll work on in this course include:
 ## Who this course is for:
 - Developers with some knowledge of Go, and Laravel developers who want faster, more scalable applications
 
+## Project app: go-laravel
+- Folder is [go-laravel](go-laravel)
+- Built in Go version 1.22.4
