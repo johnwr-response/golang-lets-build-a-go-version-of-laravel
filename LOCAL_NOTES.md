@@ -101,6 +101,10 @@
   ni celeritas/types.go -type file -Value "package celeritas`n`n"
   ni celeritas/helpers.go -type file -Value "package celeritas`n`n"
   ```
+### Creating application folders
+  ```shell
+  ni myapp/init-celeritas.go -type file -Value "package main`n`n"
+  ```
 
 
 
