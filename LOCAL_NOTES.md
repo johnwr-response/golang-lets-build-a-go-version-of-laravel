@@ -118,6 +118,16 @@
   ```
 ### Creating logs
 ### Setting up Celeritas configuration
+### Getting a simple web server up and running
+- Chi - A lightweight, idiomatic and composable router for building Go HTTP services.
+  [link](https://github.com/go-chi/chi)
+  ```shell
+  ni celeritas/routes.go -type file -Value "package celeritas`n`n"
+  cd celeritas
+  go get -u github.com/go-chi/chi/v5
+  go get -u github.com/go-chi/chi/v5/middleware
+  cd ..
+  ```
 
 
 

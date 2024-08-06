@@ -24,7 +24,8 @@ test:
 
 run: build
 	@echo Staring Celeritas...
-	@.\dist\${BINARY_NAME} &
+	set dummy=dummy&& start /B .\dist\${BINARY_NAME}
+## @.\dist\${BINARY_NAME} & ## this one wilL not run in the background and thus prevail the logs
 	@echo Celeritas started!
 
 start: run
