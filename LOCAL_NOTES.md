@@ -105,7 +105,17 @@
   ```shell
   ni myapp/init-celeritas.go -type file -Value "package main`n`n"
   ```
-
+### Creating and reading the .env file
+- GoDotEnv - A Go port of Ruby's dotenv library (Loads environment variables from .env files)
+  [GitHub](https://github.com/joho/godotenv)
+  ```
+  cd celeritas
+  go get github.com/joho/godotenv
+  cd ..
+  ```
+  ```shell
+  ni myapp/.env -type file
+  ```
 
 
 

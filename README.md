@@ -69,4 +69,5 @@ The key features we'll work on in this course include:
 
 ## Project app: go-laravel
 - Folder is [go-laravel](go-laravel)
-- Built in Go version 1.22.4
+- Built in Go version 1.22.5
+- Uses GoDotEnv [link](https://github.com/joho/godotenv)
