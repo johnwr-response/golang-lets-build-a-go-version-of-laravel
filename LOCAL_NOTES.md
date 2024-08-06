@@ -96,6 +96,11 @@
   make restart
   make test
   ```
+### Starting work on Celeritas
+  ```shell
+  ni celeritas/types.go -type file -Value "package celeritas`n`n"
+  ni celeritas/helpers.go -type file -Value "package celeritas`n`n"
+  ```
 
 
 
