@@ -117,6 +117,7 @@
   ni myapp/.env -type file
   ```
 ### Creating logs
+### Setting up Celeritas configuration
 
 
 

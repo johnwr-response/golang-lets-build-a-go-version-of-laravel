@@ -10,6 +10,8 @@ import (
 
 const version = "1.0.0"
 
+// Celeritas is the overall type for the Celeritas package. Members that are
+// exported in this type are available to any application that uses it
 type Celeritas struct {
 	AppName  string
 	Debug    bool
@@ -17,8 +19,16 @@ type Celeritas struct {
 	ErrorLog *log.Logger
 	InfoLog  *log.Logger
 	RootPath string
+	config   config
 }
 
+type config struct {
+	port     string
+	renderer string
+}
+
+// New reads the .env file, creates our application config, populates the Celeritas type with
+// settings based on .env values, and creates necessary folders and file if they don't exist
 func (c *Celeritas) New(rootPath string) error {
 	pathConfig := initPaths{
 		rootPath:    rootPath,
@@ -46,6 +56,11 @@ func (c *Celeritas) New(rootPath string) error {
 	c.ErrorLog = errorLog
 	c.Debug, _ = strconv.ParseBool(os.Getenv("DEBUG"))
 	c.Version = version
+	c.RootPath = rootPath
+	c.config = config{
+		port:     os.Getenv("PORT"),
+		renderer: os.Getenv("RENDERER"),
+	}
 
 	return nil
 }
