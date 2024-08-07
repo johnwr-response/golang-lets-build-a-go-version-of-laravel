@@ -149,6 +149,7 @@
   ni myapp/routes.go -type file -Value "package main`n`n"
   ni myapp/handlers/handlers.go -type file -Value "package handlers`n`n"
   ```
+### Cleaning up Celeritas
 
 
 
