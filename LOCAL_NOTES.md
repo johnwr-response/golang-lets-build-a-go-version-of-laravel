@@ -108,7 +108,7 @@
 ### Creating and reading the .env file
 - GoDotEnv - A Go port of Ruby's dotenv library (Loads environment variables from .env files)
   [GitHub](https://github.com/joho/godotenv)
-  ```
+  ```shell
   cd celeritas
   go get github.com/joho/godotenv
   cd ..
@@ -129,10 +129,19 @@
   cd ..
   ```
 
-
-
-
 ## Rendering Pages
+### Implementing a page renderer in the Celeritas package (for Go templates)
+  ```shell
+  md celeritas/render
+  ni celeritas/render/render.go -type file -Value "package render`n`n"
+  ```
+
+
+
+
+
+
+
 ## Testing
 ## Sessions
 ## Installing MariaDB, Postgres and Redis using Docker
