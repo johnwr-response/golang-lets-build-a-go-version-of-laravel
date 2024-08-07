@@ -27,7 +27,7 @@ type TemplateData struct {
 	Secure          bool
 }
 
-func (c *Render) Page(w http.ResponseWriter, r http.Request, view string, variables, data interface{}) error {
+func (c *Render) Page(w http.ResponseWriter, r *http.Request, view string, variables, data interface{}) error {
 	switch strings.ToLower(c.Renderer) {
 	case "go":
 		return c.GoPage(w, r, view, data)
@@ -37,7 +37,7 @@ func (c *Render) Page(w http.ResponseWriter, r http.Request, view string, variab
 	return nil
 }
 
-func (c *Render) GoPage(w http.ResponseWriter, _ http.Request, view string, data interface{}) error {
+func (c *Render) GoPage(w http.ResponseWriter, _ *http.Request, view string, data interface{}) error {
 	tmpl, err := template.ParseFiles(fmt.Sprintf("%s/views/%s.page.gohtml", c.RootPath, view))
 	if err != nil {
 		return err
@@ -53,6 +53,6 @@ func (c *Render) GoPage(w http.ResponseWriter, _ http.Request, view string, data
 	return nil
 }
 
-//func (c *Render) JetPage(w http.ResponseWriter, r http.Request, view string, data interface{}) error {
+//func (c *Render) JetPage(w http.ResponseWriter, r *http.Request, view string, data interface{}) error {
 //	return nil
 //}

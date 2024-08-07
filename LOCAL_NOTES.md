@@ -144,6 +144,11 @@
   RENDERER=go
   ```
 - Just make sure that the value for RENDERER is set to go (in lowercase).
+### Trying out the Go render functionality
+  ```shell
+  ni myapp/routes.go -type file -Value "package main`n`n"
+  ni myapp/handlers/handlers.go -type file -Value "package handlers`n`n"
+  ```
 
 
 
