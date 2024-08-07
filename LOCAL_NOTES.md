@@ -135,6 +135,15 @@
   md celeritas/render
   ni celeritas/render/render.go -type file -Value "package render`n`n"
   ```
+### A note about configuration
+`Important!`
+- In the next lecture, I neglected to mention that in order to get the Go rendering functional, you will need to make a change to your .env file, as follows:
+  ```
+  # template engine: go or jet
+  # RENDERER=jet
+  RENDERER=go
+  ```
+- Just make sure that the value for RENDERER is set to go (in lowercase).
 
 
 
