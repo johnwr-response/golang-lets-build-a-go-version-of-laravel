@@ -159,6 +159,17 @@
   cd ..
   ```
 ### Rendering a Jet Template
+### Working with Jet Templates
+- Jet Template Engine extension
+  - Visual Studio Code
+    - Search for Jet Template Engine
+  - GoLand
+    - There is no support for the jet template in GoLand
+  ```shell
+  md views/layouts
+  ni views/layouts/base.jet -type file
+  ni views/home.jet -type file
+  ```
 
 
 
