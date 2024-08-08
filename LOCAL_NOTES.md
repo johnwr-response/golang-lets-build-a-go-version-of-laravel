@@ -150,6 +150,14 @@
   ni myapp/handlers/handlers.go -type file -Value "package handlers`n`n"
   ```
 ### Cleaning up Celeritas
+### Adding Jet support to our page rendering package
+- Jet Template Engine for Go
+  [link](https://github.com/CloudyKit/jet)
+  ```shell
+  cd celeritas
+  go get github.com/CloudyKit/jet/v6
+  cd ..
+  ```
 
 
 

@@ -72,3 +72,6 @@ The key features we'll work on in this course include:
 - Built in Go version 1.22.5
 - Uses GoDotEnv [link](https://github.com/joho/godotenv)
 - Uses the chi router [link](https://github.com/go-chi/chi)
+- Uses the jet template engine [link](https://github.com/CloudyKit/jet)
+  - Indirectly uses FastPrinter from same vendor to support write values in io.Writer without allocation
+    [FastPrinter](https://github.com/CloudyKit/fastprinter)
