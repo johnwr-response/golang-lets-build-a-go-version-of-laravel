@@ -158,6 +158,7 @@
   go get github.com/CloudyKit/jet/v6
   cd ..
   ```
+### Rendering a Jet Template
 
 
 
