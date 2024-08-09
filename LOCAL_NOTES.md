@@ -207,6 +207,10 @@
   md celeritas/session
   ni celeritas/session/session.go -type file -Value "package session`n`n"
   ```
+### Adding session middleware
+  ```shell
+  ni celeritas/middleware.go -type file -Value "package celeritas`n`n"
+  ```
 
 
 
