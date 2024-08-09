@@ -232,6 +232,27 @@
   ```shell
   winget install -e --id Docker.DockerDesktop
   ```
+### Bringing up and tearing down a development environment using docker-compose
+- Create files and folders
+  ```shell
+  md docker/db-data
+  ni docker/docker-compose.yml -type file
+  ```
+- Bring up
+  ```shell
+  cd docker
+  docker-compose up -d
+  cd ..
+  ```
+- Stop
+  ```shell
+  cd docker
+  docker-compose down
+  cd ..
+  ```
+- Control with make
+  - Bring up `make start_compose`
+  - Stop `make stop_compose`
 
 
 

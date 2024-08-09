@@ -40,6 +40,13 @@ restart: stop start
 
 restart_fg: stop start_fg
 
+start_compose:
+	docker-compose --project-directory docker up -d
+
+stop_compose:
+	docker-compose --project-directory docker down
+
+
 test: test_myapp test_celeritas
 	@echo All tests run!
 

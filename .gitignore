@@ -14,6 +14,9 @@
 # Other folders
 tmp/
 
+# Mounted databases in Docker
+/*/docker/db-data/*
+
 # Powershell
 .folderPsHistory.txt
 .folderPsHistoryDump.csv
