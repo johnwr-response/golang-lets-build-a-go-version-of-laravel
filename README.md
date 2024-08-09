@@ -75,3 +75,4 @@ The key features we'll work on in this course include:
 - Uses the jet template engine [link](https://github.com/CloudyKit/jet)
   - Indirectly uses FastPrinter from same vendor to support write values in io.Writer without allocation
     [FastPrinter](https://github.com/CloudyKit/fastprinter)
+- Uses the SCS HTTP Session Management for Go. [link](https://github.com/alexedwards/scs)

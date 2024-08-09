@@ -197,7 +197,16 @@
   ```shell
   ni views/jet-template.jet -type file
   ```
-
+### Choosing and Installing a session package
+- SCS - HTTP Session Management for Go. 
+  [link](https://github.com/alexedwards/scs)
+  ```shell
+  cd celeritas
+  go get github.com/alexedwards/scs/v2
+  cd ..
+  md celeritas/session
+  ni celeritas/session/session.go -type file -Value "package session`n`n"
+  ```
 
 
 
