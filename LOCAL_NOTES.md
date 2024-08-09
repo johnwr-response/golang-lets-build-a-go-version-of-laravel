@@ -221,7 +221,10 @@
   ni celeritas/session/setup_test.go -type file -Value "package session`n`n"
   ni celeritas/session/session_test.go -type file -Value "package session`n`n"
   ```
-
+### Checking our Coverage
+  ```shell
+  make test_celeritas_cover
+  ```
 
 
 
