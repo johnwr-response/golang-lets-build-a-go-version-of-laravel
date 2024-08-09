@@ -266,6 +266,7 @@
   cd ..
   ni celeritas/driver.go -type file -Value "package celeritas`n`n"
   ```
+### Building a Postgres connection string and connecting to the database
 
 
 
