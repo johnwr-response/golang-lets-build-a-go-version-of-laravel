@@ -292,6 +292,7 @@
   ni myapp/data/user.go -type file -Value "package data`n`n"
   ni myapp/data/token.go -type file -Value "package data`n`n"
   ```
+### Additional database functions for the User type
 
 
 
