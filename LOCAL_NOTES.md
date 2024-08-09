@@ -226,12 +226,17 @@
   make test_celeritas_cover
   ```
 
-
-
-
-
-
 ## Installing MariaDB, Postgres and Redis using Docker
+### Installing Docker
+[Install Docker Desktop on Windows](https://docs.docker.com/desktop/install/windows-install/)
+  ```shell
+  winget install -e --id Docker.DockerDesktop
+  ```
+
+
+
+
+
 ## Adding support for Postgres to Celeritas
 ## Testing Models
 ## Starting work on the Celeritas Command Line application
