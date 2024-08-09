@@ -190,6 +190,7 @@
   ```shell
   ni celeritas/Makefile -type file
   ```
+### Simplifying our tests using Table Tests
 
 
 
