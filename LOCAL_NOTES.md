@@ -275,7 +275,7 @@
 ### Adding ORM like functionality to our application with upper/db
 - Create files and folders
   ```shell
-  ni data/models.go -type file -Value "package data`n`n"
+  ni myapp/data/models.go -type file -Value "package data`n`n"
   ```
 - upper/db - A productive data access layer for Go
   [GitHub](https://upper.io/v4/)
@@ -284,6 +284,13 @@
   go get -u github.com/upper/db/v4/adapter/postgresql
   go get -u github.com/upper/db/v4/adapter/mysql
   cd ..
+  ```
+### Creating a real users table and a user model
+- Create files and folders
+  ```shell
+  ni users.sql -type file
+  ni myapp/data/user.go -type file -Value "package data`n`n"
+  ni myapp/data/token.go -type file -Value "package data`n`n"
   ```
 
 
