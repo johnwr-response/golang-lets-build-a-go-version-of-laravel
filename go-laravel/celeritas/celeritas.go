@@ -1,6 +1,7 @@
 package celeritas
 
 import (
+	"database/sql"
 	"fmt"
 	"github.com/CloudyKit/jet/v6"
 	"github.com/alexedwards/scs/v2"
@@ -99,6 +100,10 @@ func (c *Celeritas) New(rootPath string) error {
 			domain:   os.Getenv("COOKIE_DOMAIN"),
 		},
 		sessionType: os.Getenv("SESSION_TYPE"),
+		database: databaseConfig{
+			database: os.Getenv("DATABASE_TYPE"),
+			dsn:      c.BuildDSN(),
+		},
 	}
 
 	// create a session
@@ -144,6 +149,11 @@ func (c *Celeritas) ListenAndServe() {
 		ReadTimeout:  30 * time.Second,
 		WriteTimeout: 600 * time.Second,
 	}
+
+	defer func(Pool *sql.DB) {
+		_ = Pool.Close()
+	}(c.DB.Pool)
+
 	c.InfoLog.Printf("Listening on port %s", os.Getenv("PORT"))
 	err := srv.ListenAndServe()
 	if err != nil {
@@ -179,20 +189,24 @@ func (c *Celeritas) createRenderer() {
 
 func (c *Celeritas) BuildDSN() string {
 	var dsn string
+	log.Println("Switching on DATABASE_TYPE:", os.Getenv("DATABASE_TYPE"))
 	switch os.Getenv("DATABASE_TYPE") {
 	case "postgres", "postgresql":
-		dsn := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=%s timezone=UTC connect_timeout=5",
+		dsn = fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=%s timezone=UTC connect_timeout=5",
 			os.Getenv("DATABASE_HOST"),
 			os.Getenv("DATABASE_PORT"),
 			os.Getenv("DATABASE_USER"),
 			os.Getenv("DATABASE_NAME"),
 			os.Getenv("DATABASE_SSL_MODE"),
 		)
+		log.Println(dsn)
 		if os.Getenv("DATABASE_PASS") != "" {
-			dsn += fmt.Sprintf("%s password=%s", dsn, os.Getenv("DATABASE_PASS"))
+			dsn = fmt.Sprintf("%s password=%s", dsn, os.Getenv("DATABASE_PASS"))
 		}
+		log.Println(dsn)
 	default:
 
 	}
+	log.Println("Building database DSN:", dsn)
 	return dsn
 }

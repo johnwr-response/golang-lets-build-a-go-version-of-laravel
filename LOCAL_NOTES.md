@@ -267,6 +267,11 @@
   ni celeritas/driver.go -type file -Value "package celeritas`n`n"
   ```
 ### Building a Postgres connection string and connecting to the database
+### Trying out our database connection
+  ```postgresql
+  CREATE TABLE users(id SERIAL, first_name varchar);
+  INSERT INTO users values(1,'John');
+  ```
 
 
 
