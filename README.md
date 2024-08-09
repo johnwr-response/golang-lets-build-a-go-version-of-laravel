@@ -76,3 +76,18 @@ The key features we'll work on in this course include:
   - Indirectly uses FastPrinter from same vendor to support write values in io.Writer without allocation
     [FastPrinter](https://github.com/CloudyKit/fastprinter)
 - Uses the SCS HTTP Session Management for Go. [link](https://github.com/alexedwards/scs)
+- Uses the pgx PostgresSQL driver and toolkit for Go. [link](https://github.com/jackc/pgx)
+  - Indirectly uses crypto package from golang [Crypto](https://golang.org/x/crypto
+  - Indirectly uses text package from golang [Text](https://golang.org/x/text
+  - Indirectly uses pgConn from same vendor to provide low-level PostgresSQL database driver.
+    [pgConn](https://github.com/jackc/pgconn)
+  - Indirectly uses chunkReader from same vendor to provide io.Writer that minimizes IO reads and memory allocations.
+    [ChunkReader](https://github.com/jackc/chunkreader)
+  - Indirectly uses pgIo from same vendor to provide low-level toolkit building messages in the PostgresSQL wire protocol.
+    [pgIo](https://github.com/jackc/pgio)
+  - Indirectly uses pgPassFile from same vendor to provide parsing PostgresSQL `.pgpass` files.
+    [pgPassFile](https://github.com/jackc/pgpassfile)
+  - Indirectly uses pgProto3 from same vendor to provide encoding and decoding of the PostgresSQL wire protocol version 3.
+    [pgProto3](https://github.com/jackc/pgproto3)
+  - Indirectly uses pgServiceFile from same vendor to provide parsing of PostgresSQL service files.
+    [pgServiceFile](https://github.com/jackc/pgservicefile)

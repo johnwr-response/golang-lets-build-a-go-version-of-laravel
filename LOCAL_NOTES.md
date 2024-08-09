@@ -254,11 +254,24 @@
   - Bring up `make start_compose`
   - Stop `make stop_compose`
 
-
-
-
-
 ## Adding support for Postgres to Celeritas
+### Getting started with Postgres
+- pgx - PostgresSQL driver and toolkit for Go
+  [GitHub](https://github.com/jackc/pgx)
+  ```shell
+  cd celeritas
+  go get github.com/jackc/pgx/v5
+  go get github.com/jackc/pgconn
+  go get github.com/jackc/pgx/stdlib
+  cd ..
+  ni celeritas/driver.go -type file -Value "package celeritas`n`n"
+  ```
+
+
+
+
+
+
 ## Testing Models
 ## Starting work on the Celeritas Command Line application
 ## Validation
