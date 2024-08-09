@@ -293,6 +293,7 @@
   ni myapp/data/token.go -type file -Value "package data`n`n"
   ```
 ### Additional database functions for the User type
+### Finishing up the database functions for the User model
 
 
 
