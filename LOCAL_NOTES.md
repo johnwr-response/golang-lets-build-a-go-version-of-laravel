@@ -192,12 +192,19 @@
   ```
 ### Simplifying our tests using Table Tests
 
-
-
-
-
-
 ## Sessions
+### Implementing Sessions in Celeritas
+  ```shell
+  ni views/jet-template.jet -type file
+  ```
+
+
+
+
+
+
+
+
 ## Installing MariaDB, Postgres and Redis using Docker
 ## Adding support for Postgres to Celeritas
 ## Testing Models
