@@ -185,7 +185,11 @@
   `go test .\celeritas\render\.`
 - Run tests for viewing full coverage report render package
   `(go test '-coverprofile=coverage.out' .\celeritas\render\.) -and (go tool cover '-html=coverage.out')`
-
+### Writing more tests for the render package
+- Create files and folders
+  ```shell
+  ni celeritas/Makefile -type file
+  ```
 
 
 

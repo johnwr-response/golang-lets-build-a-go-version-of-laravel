@@ -17,11 +17,6 @@ clean:
 	@go clean
 	@echo Cleaned and deleted binaries
 
-test:
-	@echo Testing...
-	@go test ./myapp/...
-	@echo Done!
-
 run: build
 	@echo Staring Celeritas...
 	set dummy=dummy&& start /B .\dist\${BINARY_NAME}
@@ -35,3 +30,44 @@ stop:
 	@echo Stopped Celeritas
 
 restart: stop start
+
+test: test_myapp test_celeritas
+	@echo All tests run!
+
+test_cover: test_myapp_cover test_celeritas_cover
+	@echo All tests run!
+
+test_coverage: test_myapp_coverage test_celeritas_coverage
+	@echo All tests run!
+
+test_myapp:
+	@echo Testing myapp...
+	@go test -v ./myapp/...
+	@echo Done!
+
+test_myapp_cover:
+	@echo Testing myapp...
+	@go test '-coverprofile=coverage.out' ./myapp/...
+	@go tool cover '-html=coverage.out'
+	@echo Done!
+
+test_myapp_coverage:
+	@echo Testing myapp...
+	@go test -cover ./myapp/...
+	@echo Done!
+
+test_celeritas:
+	@echo Testing celeritas...
+	@go test -v ./celeritas/...
+	@echo Done!
+
+test_celeritas_cover:
+	@echo Testing celeritas...
+	@go test '-coverprofile=coverage.out' ./celeritas/...
+	@go tool cover '-html=coverage.out'
+	@echo Done!
+
+test_celeritas_coverage:
+	@echo Testing celeritas...
+	@go test -cover ./celeritas/...
+	@echo Done!
