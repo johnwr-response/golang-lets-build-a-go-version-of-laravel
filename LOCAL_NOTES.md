@@ -216,6 +216,11 @@
   ni views/sessions.jet -type file
   ```
 ### Reading data from the session and passing it to the Jet template
+### Writing tests for the session package
+  ```shell
+  ni celeritas/session/setup_test.go -type file -Value "package session`n`n"
+  ni celeritas/session/session_test.go -type file -Value "package session`n`n"
+  ```
 
 
 
