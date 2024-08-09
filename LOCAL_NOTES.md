@@ -272,6 +272,21 @@
   CREATE TABLE users(id SERIAL, first_name varchar);
   INSERT INTO users values(1,'John');
   ```
+### Adding ORM like functionality to our application with upper/db
+- Create files and folders
+  ```shell
+  ni data/models.go -type file -Value "package data`n`n"
+  ```
+- upper/db - A productive data access layer for Go
+  [GitHub](https://upper.io/v4/)
+  ```shell
+  cd myapp
+  go get -u github.com/upper/db/v4/adapter/postgresql
+  go get -u github.com/upper/db/v4/adapter/mysql
+  cd ..
+  ```
+
+
 
 
 

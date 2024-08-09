@@ -91,3 +91,5 @@ The key features we'll work on in this course include:
     [pgProto3](https://github.com/jackc/pgproto3)
   - Indirectly uses pgServiceFile from same vendor to provide parsing of PostgresSQL service files.
     [pgServiceFile](https://github.com/jackc/pgservicefile)
+- Uses the upper/db productive data access layer for Go. [link](https://upper.io/v4/)
+  - Indirectly uses several packages from pgx for postgresSql and go-sql-driver for mariaDB. See additions to `go.mod`
