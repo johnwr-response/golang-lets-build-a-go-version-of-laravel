@@ -20,16 +20,25 @@ clean:
 run: build
 	@echo Staring Celeritas...
 	set dummy=dummy&& start /B .\dist\${BINARY_NAME}
-## @.\dist\${BINARY_NAME} & ## this one wilL not run in the background and thus prevail the logs
 	@echo Celeritas started!
 
+run_foreground: build
+	@echo Staring Celeritas...
+	@.\dist\${BINARY_NAME} &
+	@echo Celeritas started in foreground!
+
+
 start: run
+
+start_fg: run_foreground
 
 stop:
 	@taskkill /IM ${BINARY_NAME} /F  /FI "MemUsage gt 2"
 	@echo Stopped Celeritas
 
 restart: stop start
+
+restart_fg: stop start_fg
 
 test: test_myapp test_celeritas
 	@echo All tests run!

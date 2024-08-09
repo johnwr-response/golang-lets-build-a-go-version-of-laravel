@@ -211,6 +211,10 @@
   ```shell
   ni celeritas/middleware.go -type file -Value "package celeritas`n`n"
   ```
+### Verifying that sessions work with myapp
+  ```shell
+  ni views/sessions.jet -type file
+  ```
 
 
 
