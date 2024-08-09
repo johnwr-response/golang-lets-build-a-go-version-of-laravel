@@ -215,6 +215,7 @@
   ```shell
   ni views/sessions.jet -type file
   ```
+### Reading data from the session and passing it to the Jet template
 
 
 
