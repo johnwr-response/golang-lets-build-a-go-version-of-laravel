@@ -171,13 +171,27 @@
   ni views/home.jet -type file
   ```
 
-
-
-
-
-
-
 ## Testing
+### Testing the render package
+- Create files and folders
+  ```shell
+  md celeritas/render/testdata/views
+  ni celeritas/render/testdata/views/home.page.gohtml -type file -Value "Hello world`n`n"
+  ni celeritas/render/testdata/views/home.jet -type file -Value "Hello jet`n`n"
+  ni celeritas/render/setup_test.go -type file -Value "package render`n`n"
+  ni celeritas/render/render_test.go -type file -Value "package render`n`n"
+  ```
+- Run tests for render package
+  `go test .\celeritas\render\.`
+- Run tests for viewing full coverage report render package
+  `(go test '-coverprofile=coverage.out' .\celeritas\render\.) -and (go tool cover '-html=coverage.out')`
+
+
+
+
+
+
+
 ## Sessions
 ## Installing MariaDB, Postgres and Redis using Docker
 ## Adding support for Postgres to Celeritas
