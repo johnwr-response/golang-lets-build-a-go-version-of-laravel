@@ -156,11 +156,11 @@ func (t *Token) AuthenticateToken(r *http.Request) (*User, error) {
 	if len(token) != 26 {
 		return nil, errors.New("token has wrong length")
 	}
-	t, err := t.GetByToken(token)
+	tkn, err := t.GetByToken(token)
 	if err != nil {
 		return nil, errors.New("no matching token found")
 	}
-	if t.Expires.Before(time.Now()) {
+	if tkn.Expires.Before(time.Now()) {
 		return nil, errors.New("token expired")
 	}
 	user, err := t.GetUserForToken(token)

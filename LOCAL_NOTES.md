@@ -310,14 +310,26 @@
   ni auth_tables.sql -type file
   ```
 
-
-
-
-
-
-
-
 ## Testing Models
+### Writing tests for models.go
+  ```shell
+  ni myapp/data/setup_test.go -type file -Value "package data`n`n"
+  ni myapp/data/models_test.go -type file -Value "package data`n`n"
+  ```
+- Sql driver mock for Golang - Sql mock driver for golang to test database interactions
+  [GitHub](https://github.com/DATA-DOG/go-sqlmock) 
+  ```shell
+  cd myapp
+  go get github.com/DATA-DOG/go-sqlmock
+  cd ..
+  ```
+
+
+
+
+
+
+
 ## Starting work on the Celeritas Command Line application
 ## Validation
 ## Helper utilities
