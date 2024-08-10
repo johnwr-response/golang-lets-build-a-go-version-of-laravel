@@ -303,6 +303,12 @@
   ni views/login.jet -type file -Value "{{extends `u{0022}./layouts/base.jet`u{0022}}}`n`n{{block browserTitle()}}`n`n{{end}}`n`n{{block css()}}`n`n{{end}}`n`n{{block pageContent()}}`n`n{{end}}`n`n{{block js()}}`n`n{{end}}"
   ```
 ### Creating the post handler for logging in
+### Adding functions to the Tokens model
+- Create files and folders
+  ```shell
+  ri user.sql
+  ni auth_tables.sql -type file
+  ```
 
 
 
