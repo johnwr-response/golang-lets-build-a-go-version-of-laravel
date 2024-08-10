@@ -294,6 +294,7 @@
   ```
 ### Additional database functions for the User type
 ### Finishing up the database functions for the User model
+### Inserting a user
 
 
 
