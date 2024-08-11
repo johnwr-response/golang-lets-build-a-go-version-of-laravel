@@ -61,10 +61,26 @@ test_myapp:
 	@go test -v ./myapp/...
 	@echo Done!
 
+test_myapp_integration:
+	@echo Testing myapp...
+	@go test -v ./myapp/... --tags integration --count=1
+	@echo Done!
+
 test_myapp_cover:
 	@echo Testing myapp...
 	@go test '-coverprofile=coverage.out' ./myapp/...
 	@go tool cover '-html=coverage.out'
+	@echo Done!
+
+test_myapp_integration_cover:
+	@echo Testing myapp...
+	@go test '-coverprofile=coverage.out' ./myapp/... --tags integration --count=1
+	@go tool cover '-html=coverage.out'
+	@echo Done!
+
+test_myapp_integration_coverage:
+	@echo Testing myapp...
+	@go test -cover ./myapp/... --tags integration --count=1
 	@echo Done!
 
 test_myapp_coverage:

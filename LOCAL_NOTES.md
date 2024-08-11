@@ -336,6 +336,12 @@
   ```shell
   ni myapp/data/integration_test.go -type file -Value "package data`n`n"
   ```
+### Creating tables in our test docker image, and running some tests
+  ```shell
+  cd myapp/data
+  go test . --tags integration --count=1
+  cd ../..
+  ```
 
 
 
