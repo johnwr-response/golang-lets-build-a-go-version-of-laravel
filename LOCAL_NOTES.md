@@ -323,6 +323,19 @@
   go get github.com/DATA-DOG/go-sqlmock
   cd ..
   ```
+### Getting started with our integration tests
+- DockerTest - Write better integration tests! DockerTest helps you boot up ephemeral docker images for your Go tests with minimal work.
+  [GitHub](https://github.com/ory/dockertest)
+  ```shell
+  cd myapp
+  go get github.com/ory/dockertest/v3
+  go get github.com/ory/dockertest/v3/docker
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  ni myapp/data/integration_test.go -type file -Value "package data`n`n"
+  ```
 
 
 

@@ -94,3 +94,5 @@ The key features we'll work on in this course include:
 - Uses the upper/db productive data access layer for Go. [link](https://upper.io/v4/)
   - Indirectly uses several packages from pgx for postgresSql and go-sql-driver for mariaDB. See additions to `go.mod`
 - Uses the Sql driver mock for Golang. [link](https://github.com/DATA-DOG/go-sqlmock)
+- Uses the DockerTest project to write better integration tests [link](https://github.com/ory/dockertest)
+  - WARNING: Indirectly uses a LOT of other packages!
