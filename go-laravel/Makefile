@@ -1,5 +1,6 @@
 SHELL=cmd
 BINARY_NAME=celeritasApp.exe
+CLI_NAME=celeritas.exe
 
 ## build: builds all binaries
 build: clean build_myapp
@@ -46,6 +47,9 @@ start_compose:
 stop_compose:
 	docker-compose --project-directory docker down
 
+## build_cli: builds the command line tool celeritas and copies it to myapp
+build_cli:
+	@go build -o ./myapp/${CLI_NAME} ./celeritas/cmd/cli
 
 test: test_myapp test_celeritas
 	@echo All tests run!

@@ -96,3 +96,7 @@ The key features we'll work on in this course include:
 - Uses the Sql driver mock for Golang. [link](https://github.com/DATA-DOG/go-sqlmock)
 - Uses the DockerTest project to write better integration tests [link](https://github.com/ory/dockertest)
   - WARNING: Indirectly uses a LOT of other packages!
+- Uses the Color package for Golang [link](https://github.com/fatih/color)
+  - Indirectly uses `go-colorable` for windows and `go-isatty` from `mattn`
+    [go-colorable](https://github.com/mattn/go-colorable)
+    [go-isatty](https://github.com/mattn/go-isatty)

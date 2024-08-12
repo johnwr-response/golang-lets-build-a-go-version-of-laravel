@@ -351,12 +351,27 @@
   - Also changed timestamp fields in database to default to UTC by replacing `now()` with `(now() at time zone 'utc')`
 ### Cleaning up our tests
 
-
-
-
-
-
 ## Starting work on the Celeritas Command Line application
+### Setting up a simple CLI package in Celeritas
+- Color - Color package for Go (golang)
+  [GitHub](https://github.com/fatih/color)
+  ```shell
+  cd celeritas
+  go get github.com/fatih/color
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  md celeritas/cmd/cli
+  ni celeritas/cmd/cli/main.go -type file -Value "package main`n`n"
+  ```
+- To build cli: `make build_cli`
+- To run cli: `myapp/celeritas.exe`
+
+
+
+
+
 ## Validation
 ## Helper utilities
 ## Response utilities, Encryption and more
