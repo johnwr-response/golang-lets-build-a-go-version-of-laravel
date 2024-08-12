@@ -11,6 +11,7 @@ import (
 	"github.com/ory/dockertest/v3"
 	"github.com/ory/dockertest/v3/docker"
 	"log"
+	"net/http"
 	"os"
 	"testing"
 	"time"
@@ -310,5 +311,183 @@ func TestToken_GetByToken(t *testing.T) {
 	_, err = models.Tokens.GetByToken("123")
 	if err == nil {
 		t.Error("no error getting non-existent token by token", err)
+	}
+}
+
+//goland:noinspection SpellCheckingInspection
+var authData = []struct {
+	name          string
+	token         string
+	email         string
+	errorExpected bool
+	message       string
+}{
+	{"invalid", "abcdefghijklmnopqrstuvwxyz", "a@here.com", true, "invalid token accepted as valid"},
+	{"invalid_length", "abcdefghijklmnopqrstuvwxy", "a@here.com", true, "token of wrong length accepted as valid"},
+	{"no user", "abcdefghijklmnopqrstuvwxyz", "a@here.com", true, "no user but token accepted as valid"},
+	{"valid", "", "me@here.com", false, "valid token reported as invalid"},
+}
+
+func TestToken_AuthenticateToken(t *testing.T) {
+	for _, tt := range authData {
+		token := ""
+		if tt.email == dummyUser.Email {
+			user, err := models.Users.GetByEmail(tt.email)
+			if err != nil {
+				t.Error("error getting user", err)
+			}
+			token = user.Token.PlainText
+		} else {
+			token = tt.token
+		}
+
+		req, _ := http.NewRequest("GET", "/", nil)
+		req.Header.Add("Authorization", "Bearer "+token)
+
+		_, err := models.Tokens.AuthenticateToken(req)
+		if err == nil && tt.errorExpected {
+			t.Errorf("%s: %s", tt.name, tt.message)
+		} else if !tt.errorExpected && err != nil {
+			t.Errorf("%s: %s- %s", tt.name, tt.message, err)
+		} else {
+			t.Logf("passed %s", tt.name)
+		}
+
+	}
+}
+
+func TestToken_Delete(t *testing.T) {
+	u, err := models.Users.GetByEmail(dummyUser.Email)
+	if err != nil {
+		t.Error("error getting user", err)
+	}
+
+	err = models.Tokens.DeleteByToken(u.Token.PlainText)
+	if err != nil {
+		t.Error("error deleting token", err)
+	}
+}
+
+func TestToken_Expired_Token(t *testing.T) {
+	// insert a token
+	u, err := models.Users.GetByEmail(dummyUser.Email)
+	if err != nil {
+		t.Error("error getting user", err)
+	}
+
+	token, err := models.Tokens.GenerateToken(u.ID, -time.Minute*10)
+	if err != nil {
+		t.Error("error generating token", err)
+	}
+
+	err = models.Tokens.Insert(*token, *u)
+	if err != nil {
+		t.Error("error inserting token", err)
+	}
+
+	req, _ := http.NewRequest("GET", "/", nil)
+	req.Header.Add("Authorization", "Bearer "+token.PlainText)
+
+	log.Println("This token should be expired:", token.PlainText)
+	_, err = models.Tokens.AuthenticateToken(req)
+	if err == nil {
+		t.Error("did not get an error when trying to expire token")
+	}
+}
+
+func TestToken_BadHeader(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/", nil)
+	_, err := models.Tokens.AuthenticateToken(req)
+	if err == nil {
+		t.Error("did not get an error when trying to authenticate request without required header")
+	}
+
+	req, _ = http.NewRequest("GET", "/", nil)
+	req.Header.Add("Authorization", "abc ")
+	_, err = models.Tokens.AuthenticateToken(req)
+	if err == nil {
+		t.Error("did not get an error when trying to authenticate request with bad required header")
+	}
+
+	newUser := User{
+		FirstName: "temp",
+		LastName:  "temp_last",
+		Email:     "you@there.com",
+		Active:    1,
+		Password:  "abc",
+	}
+	id, err := models.Users.Insert(newUser)
+	if err != nil {
+		t.Error("error inserting new user", err)
+	}
+	token, err := models.Tokens.GenerateToken(id, 1*time.Hour)
+	if err != nil {
+		t.Error("error generating token", err)
+	}
+	err = models.Tokens.Insert(*token, newUser)
+	if err != nil {
+		t.Error("error inserting new user", err)
+	}
+	err = models.Users.Delete(id)
+	if err != nil {
+		t.Error("error deleting user", err)
+	}
+
+	req, _ = http.NewRequest("GET", "/", nil)
+	req.Header.Add("Authorization", "Bearer "+token.PlainText)
+	_, err = models.Tokens.AuthenticateToken(req)
+	if err == nil {
+		t.Error("did not get an error when trying to authenticate request with token for deleted user")
+	}
+}
+
+func TestToken_DeleteNonExistentToken(t *testing.T) {
+	err := models.Tokens.DeleteByToken("abc")
+	if err != nil {
+		t.Error("error deleting non-existent token", err)
+	}
+}
+
+func TestToken_ValidToken(t *testing.T) {
+	u, err := models.Users.GetByEmail(dummyUser.Email)
+	if err != nil {
+		t.Error("error getting user", err)
+	}
+	newToken, err := models.Tokens.GenerateToken(u.ID, 24*time.Hour)
+	if err != nil {
+		t.Error("error generating token", err)
+	}
+	err = models.Tokens.Insert(*newToken, *u)
+	if err != nil {
+		t.Error("error inserting new user", err)
+	}
+
+	okay, err := models.Tokens.ValidToken(newToken.PlainText)
+	if err != nil {
+		t.Error("error validating token", err)
+	}
+	if !okay {
+		t.Error("token should be valid")
+	}
+
+	okay, _ = models.Tokens.ValidToken("abc")
+	if okay {
+		t.Error("token should not be valid")
+	}
+
+	u, err = models.Users.GetByEmail(dummyUser.Email)
+	if err != nil {
+		t.Error("error getting user", err)
+	}
+	err = models.Tokens.Delete(u.Token.ID)
+	if err != nil {
+		t.Error("error deleting user", err)
+	}
+	okay, err = models.Tokens.ValidToken(u.Token.PlainText)
+	if err == nil {
+		t.Error("no error validating deleted token")
+	}
+	if okay {
+		t.Error("token should not be valid")
 	}
 }

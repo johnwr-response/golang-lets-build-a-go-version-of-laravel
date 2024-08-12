@@ -343,6 +343,12 @@
   cd ../..
   ```
 ### Continuing to write integration tests
+### Finishing up our integration tests
+- Run tests and check coverage: `make test_myapp_integration_cover`
+- Run tests and display coverage: `make test_myapp_integration_coverage`
+- NOTE! Had to change the way time is handled to ensure UTC is always used
+  - Replaced every usage of `time.Now()` with `time.Now().UTC()`
+  - Also changed timestamp fields in database to default to UTC by replacing `now()` with `(now() at time zone 'utc')`
 
 
 

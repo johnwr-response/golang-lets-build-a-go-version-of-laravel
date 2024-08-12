@@ -12,7 +12,7 @@ import (
 )
 
 type Token struct {
-	ID        int       `db:"id" json:"id"`
+	ID        int       `db:"id,omitempty" json:"id"`
 	UserID    int       `db:"user_id" json:"user_id"`
 	FirstName string    `db:"first_name" json:"first_name"`
 	Email     string    `db:"email" json:"email"`
@@ -81,7 +81,7 @@ func (t *Token) GetByToken(plainText string) (*Token, error) {
 	return &token, nil
 }
 
-func (t *Token) DeleteById(id int) error {
+func (t *Token) Delete(id int) error {
 	collection := upper.Collection(t.Table())
 	res := collection.Find(id)
 	err := res.Delete()
@@ -111,8 +111,8 @@ func (t *Token) Insert(token Token, u User) error {
 		return err
 	}
 
-	token.CreatedAt = time.Now()
-	token.UpdatedAt = time.Now()
+	token.CreatedAt = time.Now().UTC()
+	token.UpdatedAt = time.Now().UTC()
 	token.FirstName = u.FirstName
 	token.Email = u.Email
 
@@ -127,7 +127,7 @@ func (t *Token) Insert(token Token, u User) error {
 func (t *Token) GenerateToken(userID int, ttl time.Duration) (*Token, error) {
 	token := &Token{
 		UserID:  userID,
-		Expires: time.Now().Add(ttl),
+		Expires: time.Now().UTC().Add(ttl),
 	}
 
 	randomBytes := make([]byte, 16)
@@ -160,7 +160,7 @@ func (t *Token) AuthenticateToken(r *http.Request) (*User, error) {
 	if err != nil {
 		return nil, errors.New("no matching token found")
 	}
-	if tkn.Expires.Before(time.Now()) {
+	if tkn.Expires.Before(time.Now().UTC()) {
 		return nil, errors.New("token expired")
 	}
 	user, err := t.GetUserForToken(token)
