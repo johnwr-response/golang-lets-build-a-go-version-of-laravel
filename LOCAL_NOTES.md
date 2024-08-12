@@ -349,6 +349,7 @@
 - NOTE! Had to change the way time is handled to ensure UTC is always used
   - Replaced every usage of `time.Now()` with `time.Now().UTC()`
   - Also changed timestamp fields in database to default to UTC by replacing `now()` with `(now() at time zone 'utc')`
+### Cleaning up our tests
 
 
 

@@ -46,6 +46,7 @@ var authTables string
 
 func TestMain(m *testing.M) {
 	_ = os.Setenv("DATABASE_TYPE", "postgres")
+	_ = os.Setenv("UPPER_DB_LOG", "ERROR")
 
 	p, err := dockertest.NewPool("")
 	if err != nil {
@@ -388,7 +389,6 @@ func TestToken_Expired_Token(t *testing.T) {
 	req, _ := http.NewRequest("GET", "/", nil)
 	req.Header.Add("Authorization", "Bearer "+token.PlainText)
 
-	log.Println("This token should be expired:", token.PlainText)
 	_, err = models.Tokens.AuthenticateToken(req)
 	if err == nil {
 		t.Error("did not get an error when trying to expire token")
