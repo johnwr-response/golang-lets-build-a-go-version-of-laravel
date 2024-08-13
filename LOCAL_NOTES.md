@@ -512,8 +512,15 @@
   ni celeritas/cmd/cli/templates/migrations/postgres_session.sql -type file
   ni celeritas/cmd/cli/templates/migrations/mysql_session.sql -type file
   ```
+### Adding support for database session store to the celeritas project
+  ```shell
+  cd celeritas
+  go get github.com/alexedwards/scs/pgxstore
+  go get github.com/alexedwards/scs/mysqlstore
+  cd ..
+  ```
 
-
+http://localhost:4000/create-user
 
 
 

@@ -81,6 +81,8 @@ The key features we'll work on in this course include:
   - Indirectly uses text package from golang [Text](https://golang.org/x/text
   - Indirectly uses pgConn from same vendor to provide low-level PostgresSQL database driver.
     [pgConn](https://github.com/jackc/pgconn)
+  - Indirectly uses puddle from same vendor to provide generic resource pool library.
+    [puddle](https://github.com/jackc/puddle)
   - Indirectly uses chunkReader from same vendor to provide io.Writer that minimizes IO reads and memory allocations.
     [ChunkReader](https://github.com/jackc/chunkreader)
   - Indirectly uses pgIo from same vendor to provide low-level toolkit building messages in the PostgresSQL wire protocol.
@@ -91,6 +93,7 @@ The key features we'll work on in this course include:
     [pgProto3](https://github.com/jackc/pgproto3)
   - Indirectly uses pgServiceFile from same vendor to provide parsing of PostgresSQL service files.
     [pgServiceFile](https://github.com/jackc/pgservicefile)
+  - Indirectly uses sync package from golang [Sync](https://golang.org/x/sync)
 - Uses the upper/db productive data access layer for Go. [link](https://upper.io/v4/)
   - Indirectly uses several packages from pgx for postgresSql and go-sql-driver for mariaDB. See additions to `go.mod`
 - Uses the Sql driver mock for Golang. [link](https://github.com/DATA-DOG/go-sqlmock)
