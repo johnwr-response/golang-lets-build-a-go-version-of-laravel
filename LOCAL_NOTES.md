@@ -539,7 +539,9 @@
   ```shell
   ni celeritas/validator.go -type file -Value "package celeritas`n`n"
   ```
-
+### Trying out our validation
+- Try it out
+  [Link](http://localhost:4000/update-user/1)
 
 
 
