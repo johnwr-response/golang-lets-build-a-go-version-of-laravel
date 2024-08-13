@@ -75,13 +75,20 @@ func doMake(arg2, arg3 string) error {
 		}
 		// TODO: Somewhere down the road, get rid of the `/myapp` hardcoding
 		fileName := fmt.Sprintf("%s/myapp/data/%s.go", cel.RootPath, strings.ToLower(modelName))
+		if fileExists(fileName) {
+			exitGracefully(errors.New(fileName + " already exists"))
+		}
 		model = strings.ReplaceAll(model, "$MODEL_NAME$", strcase.ToCamel(modelName))
 		model = strings.ReplaceAll(model, "$TABLE_NAME$", tableName)
 		err = copyDataToFile([]byte(model), fileName)
 		if err != nil {
 			exitGracefully(err)
 		}
-
+	case "session-store":
+		err := doSessionTable()
+		if err != nil {
+			exitGracefully(err)
+		}
 	}
 	return nil
 }

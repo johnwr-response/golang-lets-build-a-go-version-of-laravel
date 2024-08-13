@@ -505,7 +505,13 @@
 - Try it out
   `make build_cli`
   `myapp/celeritas.exe make model test`
-
+### Adding database stores to our sessions package
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/session.go -type file -Value "package main`n`n"
+  ni celeritas/cmd/cli/templates/migrations/postgres_session.sql -type file
+  ni celeritas/cmd/cli/templates/migrations/mysql_session.sql -type file
+  ```
 
 
 
