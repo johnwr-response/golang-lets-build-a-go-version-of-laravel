@@ -10,7 +10,6 @@ import (
 
 const version = "1.0.0"
 
-//goland:noinspection GoUnusedGlobalVariable
 var cel celeritas.Celeritas
 
 func main() {
@@ -23,6 +22,14 @@ func main() {
 		showHelp()
 	case "version":
 		color.Yellow("Application version: %s", version)
+	case "make":
+		if arg2 == "" {
+			exitGracefully(errors.New("make requires a subcommand: (migration|model|handler)"))
+		}
+		err := doMake(arg2, arg3)
+		if err != nil {
+			exitGracefully(err)
+		}
 	default:
 		log.Println(arg2, arg3)
 	}

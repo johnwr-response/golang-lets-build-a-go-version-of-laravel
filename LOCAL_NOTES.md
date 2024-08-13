@@ -382,6 +382,16 @@
   ```shell
   ni celeritas/migrations.go -type file -Value "package celeritas`n`n"
   ```
+### Starting work on "make migration" in our CLI application
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/make.go -type file -Value "package main`n`n"
+  ```
+- Test (Note the celeritas struct is not yet populated)
+  ```shell
+  make bild_cli
+  myapp/celeritas.exe make migration test
+  ```
 
 
 

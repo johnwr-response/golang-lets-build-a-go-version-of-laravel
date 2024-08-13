@@ -1,7 +1,11 @@
 package celeritas
 
 import (
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/golang-migrate/migrate/v4"
+	_ "github.com/golang-migrate/migrate/v4/database/mysql"
+	_ "github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"log"
 )
 
@@ -14,7 +18,7 @@ func (c *Celeritas) MigrateUp(dsn string) error {
 		_, _ = m.Close()
 	}(m)
 
-	if err = m.Up(); err != nil {
+	if err := m.Up(); err != nil {
 		log.Println("Migration Up err:", err)
 		return err
 	}
@@ -30,7 +34,7 @@ func (c *Celeritas) MigrateDownAll(dsn string) error {
 		_, _ = m.Close()
 	}(m)
 
-	if err = m.Down(); err != nil {
+	if err := m.Down(); err != nil {
 		log.Println("Migration Down err:", err)
 		return err
 	}
@@ -46,7 +50,7 @@ func (c *Celeritas) Steps(n int, dsn string) error {
 		_, _ = m.Close()
 	}(m)
 
-	if err = m.Steps(n); err != nil {
+	if err := m.Steps(n); err != nil {
 		log.Println("Migration Steps err:", err)
 		return err
 	}
@@ -62,7 +66,7 @@ func (c *Celeritas) MigrateForce(dsn string) error {
 		_, _ = m.Close()
 	}(m)
 
-	if err = m.Force(-1); err != nil {
+	if err := m.Force(-1); err != nil {
 		log.Println("Migration Force err:", err)
 		return err
 	}
