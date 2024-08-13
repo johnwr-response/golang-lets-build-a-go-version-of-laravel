@@ -415,6 +415,17 @@
   ```shell
   ni celeritas/cmd/cli/migrate.go -type file -Value "package main`n`n"
   ```
+### Trying out our "make migrate" commands with the Celeritas CLI
+- Fixing error when using windows: `Error: parse "file://...myapp/migrations": invalid port ":\\...\\myapp" after host`
+  ```shell
+  make build_cli
+  myapp/celeritas.exe make migration
+  myapp/celeritas.exe make migration some_test_name
+  myapp/celeritas.exe migrate
+  myapp/celeritas.exe migrate down
+  myapp/celeritas.exe help
+  myapp/celeritas.exe version
+  ```
 
 
 

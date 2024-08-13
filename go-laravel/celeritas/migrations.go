@@ -7,11 +7,15 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"log"
+	"path/filepath"
 )
 
 func (c *Celeritas) MigrateUp(dsn string) error {
-	m, err := migrate.New("file://"+c.RootPath+"/migrations", dsn)
+	rootPath := filepath.ToSlash(c.RootPath)
+	log.Println("MigrateUp DSN:", dsn)
+	m, err := migrate.New("file://"+rootPath+"/migrations", dsn)
 	if err != nil {
+		log.Println("Error migrate.New: ", err.Error())
 		return err
 	}
 	defer func(m *migrate.Migrate) {
@@ -26,7 +30,8 @@ func (c *Celeritas) MigrateUp(dsn string) error {
 }
 
 func (c *Celeritas) MigrateDownAll(dsn string) error {
-	m, err := migrate.New("file://"+c.RootPath+"/migrations", dsn)
+	rootPath := filepath.ToSlash(c.RootPath)
+	m, err := migrate.New("file://"+rootPath+"/migrations", dsn)
 	if err != nil {
 		return err
 	}
@@ -42,7 +47,8 @@ func (c *Celeritas) MigrateDownAll(dsn string) error {
 }
 
 func (c *Celeritas) Steps(n int, dsn string) error {
-	m, err := migrate.New("file://"+c.RootPath+"/migrations", dsn)
+	rootPath := filepath.ToSlash(c.RootPath)
+	m, err := migrate.New("file://"+rootPath+"/migrations", dsn)
 	if err != nil {
 		return err
 	}
@@ -58,7 +64,8 @@ func (c *Celeritas) Steps(n int, dsn string) error {
 }
 
 func (c *Celeritas) MigrateForce(dsn string) error {
-	m, err := migrate.New("file://"+c.RootPath+"/migrations", dsn)
+	rootPath := filepath.ToSlash(c.RootPath)
+	m, err := migrate.New("file://"+rootPath+"/migrations", dsn)
 	if err != nil {
 		return err
 	}
