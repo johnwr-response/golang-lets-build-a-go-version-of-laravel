@@ -432,7 +432,11 @@
   ni celeritas/cmd/cli/auth.go -type file -Value "package main`n`n"
   ni celeritas/cmd/cli/templates/migrations/auth_tables.postgres.sql -type file
   ```
-
+### Trying out the make auth functionality
+- Drop all tables in database
+- Delete all files in migration folder
+- Run `myapp/celeritas.exe make auth`
+- Run `myapp/celeritas.exe make migrate down`
 
 
 

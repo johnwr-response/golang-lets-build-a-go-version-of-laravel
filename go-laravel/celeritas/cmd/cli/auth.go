@@ -10,14 +10,14 @@ func doAuth() error {
 	//create migrations
 	dbType := cel.DB.DatabaseType
 	fileName := fmt.Sprintf("%d_create_auth_tables", time.Now().UTC().UnixMicro())
-	upFile := cel.RootPath + "/migrations" + fileName + ".up.sql"
-	downFile := cel.RootPath + "/migrations" + fileName + ".down.sql"
+	upFile := cel.RootPath + "/migrations/" + fileName + ".up.sql"
+	downFile := cel.RootPath + "/migrations/" + fileName + ".down.sql"
 	log.Println(dbType, upFile, downFile)
-	err := copyFileFromTemplate(fmt.Sprintf("templates/migrations/auth.tables.%s.sql", dbType), upFile)
+	err := copyFileFromTemplate(fmt.Sprintf("templates/migrations/auth_tables.%s.sql", dbType), upFile)
 	if err != nil {
 		exitGracefully(err)
 	}
-	err = copyDataToFile([]byte("drop table if exists users cascade"), upFile)
+	err = copyDataToFile([]byte("drop table if exists users cascade"), downFile)
 	if err != nil {
 		exitGracefully(err)
 	}
