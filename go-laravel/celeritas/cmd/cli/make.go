@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/gertd/go-pluralize"
 	"github.com/iancoleman/strcase"
 	"os"
 	"strings"
@@ -54,6 +55,33 @@ func doMake(arg2, arg3 string) error {
 		if err != nil {
 			exitGracefully(err)
 		}
+	case "model":
+		if arg3 == "" {
+			exitGracefully(errors.New("you must give the model a name"))
+		}
+		data, err := templateFS.ReadFile("templates/data/model.go.txt")
+		if err != nil {
+			exitGracefully(err)
+		}
+		model := string(data)
+		pl := pluralize.NewClient()
+		var modelName = arg3
+		var tableName = arg3
+		if pl.IsPlural(arg3) {
+			modelName = pl.Singular(arg3)
+			tableName = strings.ToLower(tableName)
+		} else {
+			tableName = strings.ToLower(pl.Plural(arg3))
+		}
+		// TODO: Somewhere down the road, get rid of the `/myapp` hardcoding
+		fileName := fmt.Sprintf("%s/myapp/data/%s.go", cel.RootPath, strings.ToLower(modelName))
+		model = strings.ReplaceAll(model, "$MODEL_NAME$", strcase.ToCamel(modelName))
+		model = strings.ReplaceAll(model, "$TABLE_NAME$", tableName)
+		err = copyDataToFile([]byte(model), fileName)
+		if err != nil {
+			exitGracefully(err)
+		}
+
 	}
 	return nil
 }

@@ -7,6 +7,7 @@ require (
 	github.com/CloudyKit/jet/v6 v6.2.0 // indirect
 	github.com/alexedwards/scs/v2 v2.8.0 // indirect
 	github.com/fatih/color v1.17.0 // indirect
+	github.com/gertd/go-pluralize v0.2.1 // indirect
 	github.com/go-chi/chi/v5 v5.1.0 // indirect
 	github.com/go-sql-driver/mysql v1.5.0 // indirect
 	github.com/golang-migrate/migrate/v4 v4.17.1 // indirect

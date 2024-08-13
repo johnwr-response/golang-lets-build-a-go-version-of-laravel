@@ -490,6 +490,27 @@
 - Try it out
   `make build_cli`
   `myapp/celeritas.exe make handler testHandler`
+### Implementing "make model" functionality
+- go-pluralize - Pluralize and singularize any word (golang adaptation of https://www.npmjs.com/package/pluralize)
+  [GitBub](https://github.com/gertd/go-pluralize)
+  ```shell
+  cd celeritas
+  go get -u github.com/gertd/go-pluralize
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/templates/data/model.go.txt -type file -Value "package data`n`n"
+  ```
+- Try it out
+  `make build_cli`
+  `myapp/celeritas.exe make model test`
+
+
+
+
+
+
 
 
 ## Validation

@@ -109,7 +109,5 @@ The key features we'll work on in this course include:
     [go-multiError](https://github.com/hashicorp/go-multierror)
 - Uses the StrCase package from `iancoleman` for converting to snake_case or CamelCase
   [link](https://github.com/iancoleman/strcase)
-
-
-
-
+- Uses the go-pluralize package from `gertd` to pluralize and singularize any word
+  [link](https://github.com/gertd/go-pluralize)
