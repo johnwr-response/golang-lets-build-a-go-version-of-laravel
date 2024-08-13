@@ -566,11 +566,12 @@
   ni myapp/handlers/convenience.go -type file -Value "package handlers`n`n"
   ```
 
-
-
-
-
 ## Response utilities, Encryption and more
+### JSON, XML, and other response types
+
+
+
+
 ## Implementing a Redis cache
 ## An aside: Redis sessions, CSRF and debugging info
 ## Implementing a BadgerDB cache
