@@ -21,18 +21,19 @@ const version = "1.0.0"
 // Celeritas is the overall type for the Celeritas package. Members that are
 // exported in this type are available to any application that uses it
 type Celeritas struct {
-	AppName  string
-	Debug    bool
-	Version  string
-	ErrorLog *log.Logger
-	InfoLog  *log.Logger
-	RootPath string
-	Routes   *chi.Mux
-	config   config
-	Render   *render.Render
-	Session  *scs.SessionManager
-	DB       Database
-	JetViews *jet.Set
+	AppName       string
+	Debug         bool
+	Version       string
+	ErrorLog      *log.Logger
+	InfoLog       *log.Logger
+	RootPath      string
+	Routes        *chi.Mux
+	config        config
+	Render        *render.Render
+	Session       *scs.SessionManager
+	DB            Database
+	JetViews      *jet.Set
+	EncryptionKey string
 }
 
 type config struct {
@@ -116,6 +117,7 @@ func (c *Celeritas) New(rootPath string) error {
 		DBPool:         c.DB.Pool,
 	}
 	c.Session = sess.InitSession()
+	c.EncryptionKey = os.Getenv("KEY")
 
 	var views = jet.NewSet(
 		jet.NewOSFileSystemLoader(fmt.Sprintf("%s/views", c.RootPath)),

@@ -67,6 +67,7 @@ func showHelp() {
     make handler <name> - creates a stub handler in the handlers directory
     make model <name>   - creates a new model in the data directory
     make session-store  - creates a table in the database as a session store
+    make key            - creates a new 32 characters encryption key
 
     `)
 }

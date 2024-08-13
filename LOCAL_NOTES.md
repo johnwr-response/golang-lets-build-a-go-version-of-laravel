@@ -571,6 +571,12 @@
 ### Creating handlers for our response types
 ### Creating the routes and links for our response types
 ### Encryption/Decryption
+### Generating and getting our encryption key
+- Try it out
+  ```shell
+  make build_cli
+  myapp/celeritas.exe make key
+  ```
 
 
 
