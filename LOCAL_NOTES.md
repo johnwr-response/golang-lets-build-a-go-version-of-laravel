@@ -554,13 +554,17 @@
   ```
 ### Building our PostForm handler with validation
 
-
-
-
-
-
-
 ## Helper utilities
+### Helper functions for the routes file
+- Create files and folders
+  ```shell
+  ni myapp/convenience.go -type file -Value "package main`n`n"
+  ```
+
+
+
+
+
 ## Response utilities, Encryption and more
 ## Implementing a Redis cache
 ## An aside: Redis sessions, CSRF and debugging info
