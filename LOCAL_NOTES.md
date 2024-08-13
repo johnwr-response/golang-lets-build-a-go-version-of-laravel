@@ -519,8 +519,12 @@
   go get github.com/alexedwards/scs/mysqlstore
   cd ..
   ```
-
-http://localhost:4000/create-user
+- To add a user in the database, use: [http://localhost:4000/create-user](http://localhost:4000/create-user)
+### Supporting MySQL/MariaDB with"make auth"
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/templates/migrations/auth_tables.mysql.sql -type file
+  ```
 
 
 

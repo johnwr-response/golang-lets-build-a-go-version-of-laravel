@@ -34,6 +34,7 @@ services:
       MYSQL_DATABASE: celeritas
       MYSQL_USER: mariadb
       MYSQL_PASSWORD: password
+      MYSQL_DEFAULT_TIME_ZONE: +00:00
 
     volumes:
       - ./db-data/mariadb:/var/lib/mysql/celeritas
