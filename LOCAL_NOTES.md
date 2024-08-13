@@ -465,6 +465,14 @@
   ni migrations/data/user.go.txt -type file -Value "package data`n`n"
   ni migrations/data/token.go.txt -type file -Value "package data`n`n"
   ```
+### Trying out our improved make auth functionality
+- Rebuild cli `make build_cli`
+- Delete `user.go` and `token.go` in the `myapp/data` folder
+- Delete `auth.go` and `auth-token.go` files in the `myapp/middleware` folder
+- Delete all files in migration folder
+- Drop all tables in database
+  `drop table if exists users cascade; drop table if exists tokens cascade; drop table if exists remember_tokens; drop table if exists schema_migrations;`
+- Run `myapp/celeritas.exe make auth`
 
 
 
