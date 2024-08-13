@@ -107,6 +107,8 @@ The key features we'll work on in this course include:
     [ErrWrap](https://github.com/hashicorp/errwrap)
   - Indirectly uses go-multiError from hashicorp for a mechanism for representing a list of errors as a single error.
     [go-multiError](https://github.com/hashicorp/go-multierror)
+- Uses the StrCase package from `iancoleman` for converting to snake_case or CamelCase
+  [link](https://github.com/iancoleman/strcase)
 
 
 

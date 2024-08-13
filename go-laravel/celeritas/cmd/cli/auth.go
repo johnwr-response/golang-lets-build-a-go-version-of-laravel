@@ -29,6 +29,8 @@ func doAuth() error {
 		exitGracefully(err)
 	}
 
+	// TODO: Somewhere down the road, get rid of the `/myapp` hardcoding
+
 	// copy files over
 	err = copyFileFromTemplate("templates/data/user.go.txt", cel.RootPath+"/myapp/data/user.go")
 	if err != nil {

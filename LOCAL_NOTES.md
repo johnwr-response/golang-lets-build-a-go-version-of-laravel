@@ -440,9 +440,9 @@
 ### Continuing with the "make auth" functionality in our command line program
 - Create files and folders
   ```shell
-  md celeritas/cmd/cli/templates/middleware
-  ni celeritas/cmd/cli/templates/middleware/auth.go.txt -type file -Value "package middleware`n`n"
-  ni celeritas/cmd/cli/templates/middleware/auth-token.go.txt -type file -Value "package middleware`n`n"
+  md celeritas/cmd/cli/templates/data
+  ni celeritas/cmd/cli/templates/data/user.go.txt -type file -Value "package data`n`n"
+  ni celeritas/cmd/cli/templates/data/token.go.txt -type file -Value "package data`n`n"
   ```
 - Delete `myapp/data/user.go`, it will be recreated
 - Delete `myapp/data/token.go`, it will be recreated
@@ -460,10 +460,11 @@
   ni celeritas/response-utils.go -type file -Value "package celeritas`n`n"
   ```
 ### Installing our auth middleware with the celeritas command line utility
+- Create files and folders
   ```shell
-  md migrations/middleware
-  ni migrations/data/user.go.txt -type file -Value "package data`n`n"
-  ni migrations/data/token.go.txt -type file -Value "package data`n`n"
+  md celeritas/cmd/cli/templates/middleware
+  ni celeritas/cmd/cli/templates/middleware/auth.go.txt -type file -Value "package middleware`n`n"
+  ni celeritas/cmd/cli/templates/middleware/auth-token.go.txt -type file -Value "package middleware`n`n"
   ```
 ### Trying out our improved make auth functionality
 - Rebuild cli `make build_cli`
@@ -473,8 +474,22 @@
 - Drop all tables in database
   `drop table if exists users cascade; drop table if exists tokens cascade; drop table if exists remember_tokens; drop table if exists schema_migrations;`
 - Run `myapp/celeritas.exe make auth`
-
-
+### Implementing "make handler" functionality
+- StrCase - A golang package for converting to snake_case or CamelCase
+  [GitBub](https://github.com/iancoleman/strcase)
+  ```shell
+  cd celeritas
+  go get -u github.com/iancoleman/strcase
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  md celeritas/cmd/cli/templates/handlers
+  ni celeritas/cmd/cli/templates/handlers/handler.go.txt -type file -Value "package handlers`n`n"
+  ```
+- Try it out
+  `make build_cli`
+  `myapp/celeritas.exe make handler testHandler`
 
 
 ## Validation
