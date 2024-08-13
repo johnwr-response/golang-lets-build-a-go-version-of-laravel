@@ -570,6 +570,7 @@
 ### JSON, XML, and other response types
 ### Creating handlers for our response types
 ### Creating the routes and links for our response types
+### Encryption/Decryption
 
 
 
