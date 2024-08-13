@@ -2,7 +2,7 @@ package main
 
 import (
 	"embed"
-	"io/ioutil"
+	"os"
 )
 
 //go:embed templates
@@ -25,8 +25,7 @@ func copyFileFromTemplate(templatePath, targetFile string) error {
 }
 
 func copyDataToFile(data []byte, to string) error {
-	// Deprecated, replace by os.WriteFile
-	err := ioutil.WriteFile(to, data, 0644)
+	err := os.WriteFile(to, data, 0644)
 	if err != nil {
 		return err
 	}

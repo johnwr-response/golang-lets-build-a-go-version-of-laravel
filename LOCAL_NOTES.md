@@ -400,6 +400,16 @@
   ni celeritas/cmd/cli/templates/migrations/migration.postgres.up.sql -type file
   ni celeritas/cmd/cli/templates/migrations/migration.postgres.down.sql -type file
   ```
+### Trying out our make migration functionality
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/helpers.go -type file -Value "package main`n`n"
+  ```
+- This creates up/down migrations in the migration folder under where the command is run. (`go-laravel/migrations/*`)
+  ```shell
+  make build_cli
+  myapp/celeritas.exe make migration some_test_name
+  ```
 
 
 
