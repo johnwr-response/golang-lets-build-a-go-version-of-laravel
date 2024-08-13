@@ -1,0 +1,70 @@
+package celeritas
+
+import (
+	"github.com/golang-migrate/migrate/v4"
+	"log"
+)
+
+func (c *Celeritas) MigrateUp(dsn string) error {
+	m, err := migrate.New("file://"+c.RootPath+"/migrations", dsn)
+	if err != nil {
+		return err
+	}
+	defer func(m *migrate.Migrate) {
+		_, _ = m.Close()
+	}(m)
+
+	if err = m.Up(); err != nil {
+		log.Println("Migration Up err:", err)
+		return err
+	}
+	return nil
+}
+
+func (c *Celeritas) MigrateDownAll(dsn string) error {
+	m, err := migrate.New("file://"+c.RootPath+"/migrations", dsn)
+	if err != nil {
+		return err
+	}
+	defer func(m *migrate.Migrate) {
+		_, _ = m.Close()
+	}(m)
+
+	if err = m.Down(); err != nil {
+		log.Println("Migration Down err:", err)
+		return err
+	}
+	return nil
+}
+
+func (c *Celeritas) Steps(n int, dsn string) error {
+	m, err := migrate.New("file://"+c.RootPath+"/migrations", dsn)
+	if err != nil {
+		return err
+	}
+	defer func(m *migrate.Migrate) {
+		_, _ = m.Close()
+	}(m)
+
+	if err = m.Steps(n); err != nil {
+		log.Println("Migration Steps err:", err)
+		return err
+	}
+	return nil
+}
+
+func (c *Celeritas) MigrateForce(dsn string) error {
+	m, err := migrate.New("file://"+c.RootPath+"/migrations", dsn)
+	if err != nil {
+		return err
+	}
+	defer func(m *migrate.Migrate) {
+		_, _ = m.Close()
+	}(m)
+
+	if err = m.Force(-1); err != nil {
+		log.Println("Migration Force err:", err)
+		return err
+	}
+	return nil
+}

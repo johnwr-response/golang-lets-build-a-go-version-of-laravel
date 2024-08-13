@@ -367,6 +367,21 @@
   ```
 - To build cli: `make build_cli`
 - To run cli: `myapp/celeritas.exe`
+### Adding support for migrations to the Celeritas package
+- Migrate - Database migrations. CLI and Golang library.
+  [GitHub](https://github.com/golang-migrate/migrate)
+  ```shell
+  cd celeritas
+  go get github.com/golang-migrate/migrate/v4
+  go get github.com/golang-migrate/migrate/v4/database/mysql
+  go get github.com/golang-migrate/migrate/v4/database/postgres
+  go get github.com/golang-migrate/migrate/v4/source/file
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  ni celeritas/migrations.go -type file -Value "package celeritas`n`n"
+  ```
 
 
 

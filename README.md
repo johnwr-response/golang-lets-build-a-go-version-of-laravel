@@ -100,3 +100,14 @@ The key features we'll work on in this course include:
   - Indirectly uses `go-colorable` for windows and `go-isatty` from `mattn`
     [go-colorable](https://github.com/mattn/go-colorable)
     [go-isatty](https://github.com/mattn/go-isatty)
+- Uses the Migrate package for Database migrations [link](https://github.com/golang-migrate/migrate)
+  - Indirectly uses atomic from uber to provide simple wrappers for primitive types to enforce atomic access.
+    [atomic](https://go.uber.org/atomic)
+  - Indirectly uses ErrWrap from hashicorp to formalize wrapping and querying errors.
+    [ErrWrap](https://github.com/hashicorp/errwrap)
+  - Indirectly uses go-multiError from hashicorp for a mechanism for representing a list of errors as a single error.
+    [go-multiError](https://github.com/hashicorp/go-multierror)
+
+
+
+
