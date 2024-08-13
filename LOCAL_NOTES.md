@@ -410,6 +410,11 @@
   make build_cli
   myapp/celeritas.exe make migration some_test_name
   ```
+### Running migrations
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/migrate.go -type file -Value "package main`n`n"
+  ```
 
 
 
