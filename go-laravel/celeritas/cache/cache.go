@@ -34,3 +34,18 @@ func (c *RedisCache) Has(key string) (bool, error) {
 	}
 	return ok, nil
 }
+
+//goland:noinspection GoUnusedParameter
+func (c *RedisCache) Get(str string) (interface{}, error) { return "", nil }
+
+//goland:noinspection GoUnusedParameter
+func (c *RedisCache) Set(str string, data interface{}, ttl ...int) error { return nil }
+
+//goland:noinspection GoUnusedParameter
+func (c *RedisCache) Forget(str string) error { return nil }
+
+//goland:noinspection GoUnusedParameter
+func (c *RedisCache) EmptyByMatch(str string) error { return nil }
+
+//goland:noinspection GoUnusedParameter
+func (c *RedisCache) Empty() error { return nil }
