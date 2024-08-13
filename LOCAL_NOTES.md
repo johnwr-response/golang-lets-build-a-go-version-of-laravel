@@ -560,6 +560,11 @@
   ```shell
   ni myapp/convenience.go -type file -Value "package main`n`n"
   ```
+### Helper functions for handlers
+- Create files and folders
+  ```shell
+  ni myapp/handlers/convenience.go -type file -Value "package handlers`n`n"
+  ```
 
 
 
