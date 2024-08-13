@@ -577,6 +577,9 @@
   make build_cli
   myapp/celeritas.exe make key
   ```
+### Trying out our encryption functionality
+- Try it out
+  [Link](http://localhost:4000/crypto)
 
 
 

@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"github.com/CloudyKit/jet/v6"
 	"github.com/johnwr-response/celeritas"
 	"myapp/data"
@@ -84,4 +85,23 @@ func (h *Handlers) XML(w http.ResponseWriter, _ *http.Request) {
 
 func (h *Handlers) DownloadFile(w http.ResponseWriter, r *http.Request) {
 	_ = h.App.DownloadFile(w, r, "./public/images", "celeritas.jpg")
+}
+
+func (h *Handlers) TestCrypto(w http.ResponseWriter, _ *http.Request) {
+	plainText := "Hello World!"
+	_, _ = fmt.Fprint(w, "Unencrypted: ", plainText+"\n")
+	encrypted, err := h.encrypt(plainText)
+	if err != nil {
+		h.App.ErrorLog.Println("Error encrypting data:", err)
+		h.App.Error500(w)
+		return
+	}
+	_, _ = fmt.Fprint(w, "Encrypted: ", encrypted+"\n")
+	decrypted, err := h.decrypt(encrypted)
+	if err != nil {
+		h.App.ErrorLog.Println("Error decrypting data:", err)
+		h.App.Error500(w)
+		return
+	}
+	_, _ = fmt.Fprint(w, "Decrypted: ", decrypted+"\n")
 }
