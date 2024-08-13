@@ -392,6 +392,14 @@
   make bild_cli
   myapp/celeritas.exe make migration test
   ```
+### Using templates in our CLI
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/copy-files.go -type file -Value "package main`n`n"
+  md celeritas/cmd/cli/templates/migrations
+  ni celeritas/cmd/cli/templates/migrations/migration.postgres.up.sql -type file
+  ni celeritas/cmd/cli/templates/migrations/migration.postgres.down.sql -type file
+  ```
 
 
 

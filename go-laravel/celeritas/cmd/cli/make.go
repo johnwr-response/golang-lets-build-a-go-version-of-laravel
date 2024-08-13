@@ -20,6 +20,16 @@ func doMake(arg2, arg3 string) error {
 		upFile := cel.RootPath + "/migrations/" + filename + "." + dbType + ".up.sql"
 		downFile := cel.RootPath + "/migrations/" + filename + "." + dbType + ".down.sql"
 		log.Printf("Migrating filename for up is %s and down is %s", upFile, downFile)
+
+		err := copyFileFromTemplate(fmt.Sprintf("templates/migrations/migration.%s.up.sql", dbType), upFile)
+		if err != nil {
+			exitGracefully(err)
+		}
+		err = copyFileFromTemplate(fmt.Sprintf("templates/migrations/migration.%s.down.sql", dbType), downFile)
+		if err != nil {
+			exitGracefully(err)
+		}
+
 	}
 	return nil
 }
