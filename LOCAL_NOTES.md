@@ -440,9 +440,9 @@
 ### Continuing with the "make auth" functionality in our command line program
 - Create files and folders
   ```shell
-  md migrations/data
-  ni migrations/data/user.go.txt -type file -Value "package data`n`n"
-  ni migrations/data/token.go.txt -type file -Value "package data`n`n"
+  md celeritas/cmd/cli/templates/middleware
+  ni celeritas/cmd/cli/templates/middleware/auth.go.txt -type file -Value "package middleware`n`n"
+  ni celeritas/cmd/cli/templates/middleware/auth-token.go.txt -type file -Value "package middleware`n`n"
   ```
 - Delete `myapp/data/user.go`, it will be recreated
 - Delete `myapp/data/token.go`, it will be recreated
@@ -458,6 +458,12 @@
   ni myapp/middleware/middleware.go -type file -Value "package middleware`n`n"
   ni myapp/middleware/auth-token.go -type file -Value "package middleware`n`n"
   ni celeritas/response-utils.go -type file -Value "package celeritas`n`n"
+  ```
+### Installing our auth middleware with the celeritas command line utility
+  ```shell
+  md migrations/middleware
+  ni migrations/data/user.go.txt -type file -Value "package data`n`n"
+  ni migrations/data/token.go.txt -type file -Value "package data`n`n"
   ```
 
 

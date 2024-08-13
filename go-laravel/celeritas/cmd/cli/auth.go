@@ -37,6 +37,14 @@ func doAuth() error {
 	if err != nil {
 		exitGracefully(err)
 	}
+	err = copyFileFromTemplate("templates/middleware/auth.go.txt", cel.RootPath+"/myapp/middleware/auth.go")
+	if err != nil {
+		exitGracefully(err)
+	}
+	err = copyFileFromTemplate("templates/middleware/auth-token.go.txt", cel.RootPath+"/myapp/middleware/auth-token.go")
+	if err != nil {
+		exitGracefully(err)
+	}
 
 	return nil
 }
