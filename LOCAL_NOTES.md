@@ -546,6 +546,14 @@
 ### Trying out our model validation
 - Try it out
   [Link](http://localhost:4000/update-user/1)
+### Building a simple form and performing validation on it
+- Create files and folders
+  ```shell
+  ni views/form.jet -type file -Value "{{extends `u{0022}./layouts/base.jet`u{0022}}}`n`n{{block browserTitle()}}`n`n{{end}}`n`n{{block css()}}`n`n{{end}}`n`n{{block pageContent()}}`n`n{{end}}`n`n{{block js()}}`n`n{{end}}"
+  ni myapp/handlers/form-val-handlers.go -type file -Value "package handlers`n`n"
+  ```
+
+
 
 
 
