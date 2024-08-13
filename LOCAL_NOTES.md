@@ -426,6 +426,12 @@
   myapp/celeritas.exe help
   myapp/celeritas.exe version
   ```
+### Getting started with Implementing "make auth" functionality
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/auth.go -type file -Value "package main`n`n"
+  ni celeritas/cmd/cli/templates/migrations/auth_tables.postgres.sql -type file
+  ```
 
 
 
