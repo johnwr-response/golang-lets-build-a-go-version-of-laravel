@@ -116,3 +116,5 @@ The key features we'll work on in this course include:
   [link](https://github.com/gertd/go-pluralize)
 - Uses the goValidator package from `asaskevich` for validators and sanitizers for strings, numerics, slices and structs
   [link](https://github.com/asaskevich/govalidator)
+- Uses the Redigo Go client for Redis
+  [link](https://github.com/gomodule/redigo)

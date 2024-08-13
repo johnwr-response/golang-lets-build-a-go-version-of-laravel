@@ -476,7 +476,7 @@
 - Run `myapp/celeritas.exe make auth`
 ### Implementing "make handler" functionality
 - StrCase - A golang package for converting to snake_case or CamelCase
-  [GitBub](https://github.com/iancoleman/strcase)
+  [GitHub](https://github.com/iancoleman/strcase)
   ```shell
   cd celeritas
   go get -u github.com/iancoleman/strcase
@@ -492,7 +492,7 @@
   `myapp/celeritas.exe make handler testHandler`
 ### Implementing "make model" functionality
 - go-pluralize - Pluralize and singularize any word (golang adaptation of https://www.npmjs.com/package/pluralize)
-  [GitBub](https://github.com/gertd/go-pluralize)
+  [GitHub](https://github.com/gertd/go-pluralize)
   ```shell
   cd celeritas
   go get -u github.com/gertd/go-pluralize
@@ -529,7 +529,7 @@
 ## Validation
 ### Creating a validation package
 - goValidator - Go Package of validators and sanitizers for strings, numerics, slices and structs
-  [GitBub](https://github.com/asaskevich/govalidator)
+  [GitHub](https://github.com/asaskevich/govalidator)
   ```shell
   cd celeritas
   go get github.com/asaskevich/govalidator
@@ -581,10 +581,24 @@
 - Try it out
   [Link](http://localhost:4000/crypto)
 
-
-
-
 ## Implementing a Redis cache
+### Installing the necessary package and getting started
+- Redigo - Go client for Redis
+  [GitHub](https://github.com/gomodule/redigo)
+  ```shell
+  cd celeritas
+  go get github.com/gomodule/redigo/redis
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  md celeritas/cache
+  ni celeritas/cache/cache.go -type file -Value "package cache`n`n"
+  ```
+
+
+
+
 ## An aside: Redis sessions, CSRF and debugging info
 ## Implementing a BadgerDB cache
 ## Sending Email
