@@ -451,6 +451,14 @@
 - Run `myapp/celeritas.exe make auth`
 - Run `myapp/celeritas.exe migrate down`
 - Run `myapp/celeritas.exe migrate up`
+### Creating simple auth middleware, and adding it to the "make auth" command
+- Create files and folders
+  ```shell
+  ni myapp/middleware/auth.go -type file -Value "package middleware`n`n"
+  ni myapp/middleware/middleware.go -type file -Value "package middleware`n`n"
+  ni myapp/middleware/auth-token.go -type file -Value "package middleware`n`n"
+  ni celeritas/response-utils.go -type file -Value "package celeritas`n`n"
+  ```
 
 
 
