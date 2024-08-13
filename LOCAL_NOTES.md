@@ -526,11 +526,25 @@
   ni celeritas/cmd/cli/templates/migrations/auth_tables.mysql.sql -type file
   ```
 
-
-
-
-
 ## Validation
+### Creating a validation package
+- goValidator - Go Package of validators and sanitizers for strings, numerics, slices and structs
+  [GitBub](https://github.com/asaskevich/govalidator)
+  ```shell
+  cd celeritas
+  go get github.com/asaskevich/govalidator
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  ni celeritas/validator.go -type file -Value "package celeritas`n`n"
+  ```
+
+
+
+
+
+
 ## Helper utilities
 ## Response utilities, Encryption and more
 ## Implementing a Redis cache

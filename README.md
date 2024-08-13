@@ -114,3 +114,5 @@ The key features we'll work on in this course include:
   [link](https://github.com/iancoleman/strcase)
 - Uses the go-pluralize package from `gertd` to pluralize and singularize any word
   [link](https://github.com/gertd/go-pluralize)
+- Uses the goValidator package from `asaskevich` for validators and sanitizers for strings, numerics, slices and structs
+  [link](https://github.com/asaskevich/govalidator)
