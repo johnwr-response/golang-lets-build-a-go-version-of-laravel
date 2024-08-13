@@ -437,6 +437,20 @@
 - Delete all files in migration folder
 - Run `myapp/celeritas.exe make auth`
 - Run `myapp/celeritas.exe make migrate down`
+### Continuing with the "make auth" functionality in our command line program
+- Create files and folders
+  ```shell
+  md migrations/data
+  ni migrations/data/user.go.txt -type file -Value "package data`n`n"
+  ni migrations/data/token.go.txt -type file -Value "package data`n`n"
+  ```
+- Delete `myapp/data/user.go`, it will be recreated
+- Delete `myapp/data/token.go`, it will be recreated
+- Delete all migrations in migration folder
+- Drop all tables in database
+- Run `myapp/celeritas.exe make auth`
+- Run `myapp/celeritas.exe migrate down`
+- Run `myapp/celeritas.exe migrate up`
 
 
 
