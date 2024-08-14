@@ -143,11 +143,19 @@ func (c *Celeritas) New(rootPath string) error {
 	c.Session = sess.InitSession()
 	c.EncryptionKey = os.Getenv("KEY")
 
-	var views = jet.NewSet(
-		jet.NewOSFileSystemLoader(fmt.Sprintf("%s/views", c.RootPath)),
-		jet.InDevelopmentMode(),
-	)
-	c.JetViews = views
+	if c.Debug {
+		var views = jet.NewSet(
+			jet.NewOSFileSystemLoader(fmt.Sprintf("%s/views", c.RootPath)),
+			jet.InDevelopmentMode(),
+		)
+		c.JetViews = views
+	} else {
+		var views = jet.NewSet(
+			jet.NewOSFileSystemLoader(fmt.Sprintf("%s/views", c.RootPath)),
+		)
+		c.JetViews = views
+	}
+
 	c.createRenderer()
 
 	return nil

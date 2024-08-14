@@ -640,6 +640,11 @@
   go get github.com/justinas/nosurf
   cd ..
   ```
+### Speeding up templates
+- Create files and folders
+  ```shell
+  ni celeritas/utils.go -type file -Value "package celeritas`n`n"
+  ```
 
 
 
