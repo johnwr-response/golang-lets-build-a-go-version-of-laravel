@@ -712,6 +712,26 @@
   cd ..
   ```
 ### Connecting Celeritas to our mailer package
+### Trying out or mailer package
+- MailTrap Email Delivery Platform is the toolset to test, send, and control your emails in one place.
+  [Link](https://mailtrap.io/)
+- Sample Credentials
+  - Host: `sandbox.smtp.mailtrap.io`
+  - Port: `25, 465, 587 or 2525`
+  - Username: `25853d08526311`
+  - Password: `399982fbb4cbe9`
+- MailHog is an email-testing tool with a fake SMTP server underneath, installed here as a docker container
+  [Link](https://github.com/mailhog/MailHog) 
+- Starting and stopping mailHog
+  ````
+  cd docker
+  docker-compose up mailHog -d
+  docker-compose down mailHog 
+  ````
+- Usage:
+  - [Sendmail](`localhost:1025`)
+  - [Web interface](http://localhost:8025/ "MailHog web interface")
+
 
 
 

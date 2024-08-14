@@ -123,10 +123,10 @@ func (c *Celeritas) New(rootPath string) error {
 	// populate celeritas variable
 	c.InfoLog = infoLog
 	c.ErrorLog = errorLog
-	c.Mail = c.createMailer()
 	c.Debug, _ = strconv.ParseBool(os.Getenv("DEBUG"))
 	c.Version = version
 	c.RootPath = rootPath
+	c.Mail = c.createMailer()
 	c.Routes = c.routes().(*chi.Mux)
 	c.config = config{
 		port:     os.Getenv("PORT"),
