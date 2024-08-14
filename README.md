@@ -129,3 +129,5 @@ The key features we'll work on in this course include:
 - Uses the BadgerDB as a fast embedded key-value DB
   [link](https://github.com/dgraph-io/badger)
   - WARNING: Indirectly uses a LOT of other packages!
+- Uses the Cron library for go
+  [link](https://github.com/robfig/cron)

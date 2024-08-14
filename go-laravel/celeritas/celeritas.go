@@ -5,12 +5,14 @@ import (
 	"fmt"
 	"github.com/CloudyKit/jet/v6"
 	"github.com/alexedwards/scs/v2"
+	"github.com/dgraph-io/badger/v4"
 	"github.com/go-chi/chi/v5"
 	"github.com/gomodule/redigo/redis"
 	"github.com/johnwr-response/celeritas/cache"
 	"github.com/johnwr-response/celeritas/render"
 	"github.com/johnwr-response/celeritas/session"
 	"github.com/joho/godotenv"
+	"github.com/robfig/cron/v3"
 	"log"
 	"net/http"
 	"os"
@@ -21,6 +23,7 @@ import (
 const version = "1.0.0"
 
 var myRedisCache *cache.RedisCache
+var myBadgerCache *cache.BadgerCache
 
 // Celeritas is the overall type for the Celeritas package. Members that are
 // exported in this type are available to any application that uses it
@@ -39,6 +42,7 @@ type Celeritas struct {
 	JetViews      *jet.Set
 	EncryptionKey string
 	Cache         cache.Cache
+	Scheduler     *cron.Cron
 }
 
 type config struct {
@@ -93,6 +97,17 @@ func (c *Celeritas) New(rootPath string) error {
 	if os.Getenv("CACHE") == "redis" || os.Getenv("SESSION_TYPE") == "redis" {
 		myRedisCache = c.createClientRedisCache()
 		c.Cache = myRedisCache
+	}
+	if os.Getenv("CACHE") == "badger" {
+		myBadgerCache = c.createClientBadgerClass()
+		c.Cache = myBadgerCache
+
+		_, err = c.Scheduler.AddFunc("@daily", func() {
+			_ = myBadgerCache.Conn.RunValueLogGC(0.7)
+		})
+		if err != nil {
+			return err
+		}
 	}
 
 	// populate celeritas variable
@@ -231,6 +246,13 @@ func (c *Celeritas) createClientRedisCache() *cache.RedisCache {
 	return &cacheClient
 }
 
+func (c *Celeritas) createClientBadgerClass() *cache.BadgerCache {
+	cacheClient := cache.BadgerCache{
+		Conn: c.createBadgerConn(),
+	}
+	return &cacheClient
+}
+
 func (c *Celeritas) createRedisPool() *redis.Pool {
 	return &redis.Pool{
 		MaxIdle:     50,
@@ -247,6 +269,14 @@ func (c *Celeritas) createRedisPool() *redis.Pool {
 			return err
 		},
 	}
+}
+
+func (c *Celeritas) createBadgerConn() *badger.DB {
+	db, err := badger.Open(badger.DefaultOptions(fmt.Sprintf("%s/tmp/badger", c.RootPath)))
+	if err != nil {
+		return nil
+	}
+	return db
 }
 
 // BuildDSN builds the datasource name for our database, and returns it as a string

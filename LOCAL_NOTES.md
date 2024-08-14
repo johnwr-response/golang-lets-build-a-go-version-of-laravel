@@ -668,6 +668,14 @@
   ```shell
   ni celeritas/cache/badger_cache_test.go -type file -Value "package cache`n`n"
   ```
+### Connecting to Badger
+- cron - a cron library for go.
+  [GitHub](https://github.com/robfig/cron)
+  ```shell
+  cd celeritas
+  go get github.com/robfig/cron/v3
+  cd ..
+  ```
 
 
 
