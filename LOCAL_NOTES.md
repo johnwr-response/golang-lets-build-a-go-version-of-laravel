@@ -731,6 +731,7 @@
 - Usage:
   - [Sendmail](`localhost:1025`)
   - [Web interface](http://localhost:8025/ "MailHog web interface")
+### Sending mail using an API
 
 
 
