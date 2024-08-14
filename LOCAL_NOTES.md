@@ -596,6 +596,7 @@
   ni celeritas/cache/cache.go -type file -Value "package cache`n`n"
   ```
 ### Connecting to Redis
+### Completing the rest of the cache functions
 
 
 
