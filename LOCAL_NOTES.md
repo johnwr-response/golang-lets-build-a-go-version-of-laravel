@@ -622,12 +622,17 @@
   ```
 ### Finishing up our cache page in myapp
 
-
-
-
-
-
 ## An aside: Redis sessions, CSRF and debugging info
+### Adding a Redis store to our sessions package
+  ```shell
+  cd celeritas
+  go get github.com/alexedwards/scs/redisstore
+  cd ..
+  ```
+
+
+
+
 ## Implementing a BadgerDB cache
 ## Sending Email
 ## Remember Me & Password Resets
