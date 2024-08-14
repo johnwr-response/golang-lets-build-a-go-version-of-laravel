@@ -614,6 +614,12 @@
   ```shell
   go test -cover -v ./celeritas/cache/...
   ```
+### Trying out the cache in myapp
+- Create files and folders
+  ```shell
+  ni views/cache.jet -type file -Value "{{extends `u{0022}./layouts/base.jet`u{0022}}}`n`n{{block browserTitle()}}`n`n{{end}}`n`n{{block css()}}`n`n{{end}}`n`n{{block pageContent()}}`n`n{{end}}`n`n{{block js()}}`n`n{{end}}"
+  ni myapp/handlers/cache-handlers.go -type file -Value "package handlers`n`n"
+  ```
 
 
 
