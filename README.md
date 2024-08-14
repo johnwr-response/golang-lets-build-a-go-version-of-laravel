@@ -126,3 +126,6 @@ The key features we'll work on in this course include:
     [gopher-lua](https://github.com/yuin/gopher-lua)
 - Uses the NoSurf CSRF protection middleware for Go
   [link](https://github.com/justinas/nosurf)
+- Uses the BadgerDB as a fast embedded key-value DB
+  [link](https://github.com/dgraph-io/badger)
+  - WARNING: Indirectly uses a LOT of other packages!

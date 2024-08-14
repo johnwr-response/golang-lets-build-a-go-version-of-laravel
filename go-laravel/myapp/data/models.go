@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-var db *sql.DB
+// var db *sql.DB
 var upper db2.Session
 
 type Models struct {
@@ -20,12 +20,15 @@ type Models struct {
 }
 
 func New(databasePool *sql.DB) Models {
-	db = databasePool
+	//db = databasePool
 
-	if os.Getenv("DATABASE_TYPE") == "mysql" || os.Getenv("DATABASE_TYPE") == "mariadb" {
+	switch os.Getenv("DATABASE_TYPE") {
+	case "mysql", "mysqldb", "mariadb", "maria:":
 		upper, _ = mysql.New(databasePool)
-	} else {
+	case "postgres", "postgresql":
 		upper, _ = postgresql.New(databasePool)
+	default:
+		// do nothing
 	}
 
 	return Models{

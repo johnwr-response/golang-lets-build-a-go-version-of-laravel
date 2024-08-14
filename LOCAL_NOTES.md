@@ -646,13 +646,26 @@
   ni celeritas/utils.go -type file -Value "package celeritas`n`n"
   ```
 
-
-
-
-
-
-
 ## Implementing a BadgerDB cache
+### Installing the necessary package and implementing necessary functions
+- BadgerDB - Fast key-value DB in Go.
+  [GitHub](https://github.com/dgraph-io/badger)
+  ```shell
+  cd celeritas
+  go get github.com/dgraph-io/badger/v4
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  ni celeritas/cache/badger_cache.go -type file -Value "package cache`n`n"
+  ```
+
+
+
+
+
+
+
 ## Sending Email
 ## Remember Me & Password Resets
 ## Implementing Celeritas new <myapp>
