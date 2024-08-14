@@ -692,6 +692,17 @@
   - Replace `go get github.com/ainsleyclark/go-mail`
   - With `go get github.com/ainsleyclark/go-mail@v1.0.3`
 - Either use that and update the code for newer version later or update code right away
+### Adding the necessary packages, and completing sending email via SMTP
+- Go Simple Mail - Golang package for send email. Support keep alive connection, TLS and SSL. Easy for bulk SMTP.
+  [GitHub](https://github.com/xhit/go-simple-mail)
+- go-premailer - Inline styling for html mail in golang
+  [GitHub](https://github.com/vanng822/go-premailer)
+  ```shell
+  cd celeritas
+  go get github.com/xhit/go-simple-mail/v2
+  go get github.com/vanng822/go-premailer/premailer
+  cd ..
+  ```
 
 
 

@@ -131,3 +131,17 @@ The key features we'll work on in this course include:
   - WARNING: Indirectly uses a LOT of other packages!
 - Uses the Cron library for go
   [link](https://github.com/robfig/cron)
+- Uses the Go Simple Mail a simple and efficient package to send email
+  [link](https://github.com/xhit/go-simple-mail)
+  - Indirectly uses go-dkim from `toorop` to support DKIM (DomainKeys Identified Mail).
+    [gopher-lua](https://github.com/toorop/go-dkim)
+- Uses the go-premailer for Inline styling in html parts of the email
+  [link](https://github.com/vanng822/go-premailer)
+  - Indirectly uses css from same vendor to support css parsing.
+    [css](https://github.com/vanng822/css)
+  - Indirectly uses css from `gorilla` to support CSS3 tokenizing.
+    [css](https://github.com/gorilla/css)
+  - Indirectly uses `cascadia` from `andybalholm`, a CSS selector library.
+    [`Cascadia`](https://github.com/andybalholm/cascadia)
+  - Indirectly uses `goquery` from `PuerkitoBio` to provide a syntax and a set of features similar to jQuery.
+    [goquery](https://github.com/PuerkitoBio/goquery)
