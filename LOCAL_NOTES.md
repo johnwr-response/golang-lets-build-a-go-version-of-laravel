@@ -664,6 +664,10 @@
   ```shell
   md celeritas/cache/testdata/tmp
   ```
+### Writing and running tests for our Badger cache
+  ```shell
+  ni celeritas/cache/badger_cache_test.go -type file -Value "package cache`n`n"
+  ```
 
 
 
