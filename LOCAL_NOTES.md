@@ -659,6 +659,11 @@
   ```shell
   ni celeritas/cache/badger_cache.go -type file -Value "package cache`n`n"
   ```
+### Updating setup_test.go to create a Badger database for our tests
+- Create files and folders
+  ```shell
+  md celeritas/cache/testdata/tmp
+  ```
 
 
 
