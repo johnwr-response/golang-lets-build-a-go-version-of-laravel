@@ -703,6 +703,14 @@
   go get github.com/vanng822/go-premailer/premailer
   cd ..
   ```
+### Sending email using Mailgun, SparkPost and more
+- Go Mail - A cross-platform mail driver for GoLang. Featuring Mailgun, Postal, Postmark, SendGrid, SparkPost & SMTP.
+  [GitHub](https://github.com/ainsleyclark/go-mail)
+  ```shell
+  cd celeritas
+  go get -u github.com/ainsleyclark/go-mail
+  cd ..
+  ```
 
 
 
