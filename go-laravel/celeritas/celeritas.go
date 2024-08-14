@@ -24,6 +24,8 @@ const version = "1.0.0"
 
 var myRedisCache *cache.RedisCache
 var myBadgerCache *cache.BadgerCache
+var redisPool *redis.Pool
+var badgerConn *badger.DB
 
 // Celeritas is the overall type for the Celeritas package. Members that are
 // exported in this type are available to any application that uses it
@@ -93,14 +95,20 @@ func (c *Celeritas) New(rootPath string) error {
 		}
 	}
 
+	// initialize scheduler
+	scheduler := cron.New()
+	c.Scheduler = scheduler
+
 	// connect to cache
 	if os.Getenv("CACHE") == "redis" || os.Getenv("SESSION_TYPE") == "redis" {
 		myRedisCache = c.createClientRedisCache()
 		c.Cache = myRedisCache
+		redisPool = myRedisCache.Conn
 	}
 	if os.Getenv("CACHE") == "badger" {
 		myBadgerCache = c.createClientBadgerClass()
 		c.Cache = myBadgerCache
+		badgerConn = myBadgerCache.Conn
 
 		_, err = c.Scheduler.AddFunc("@daily", func() {
 			_ = myBadgerCache.Conn.RunValueLogGC(0.7)
@@ -200,9 +208,23 @@ func (c *Celeritas) ListenAndServe() {
 		WriteTimeout: 600 * time.Second,
 	}
 
-	defer func(Pool *sql.DB) {
-		_ = Pool.Close()
-	}(c.DB.Pool)
+	if c.DB.Pool != nil {
+		defer func(Pool *sql.DB) {
+			_ = Pool.Close()
+		}(c.DB.Pool)
+	}
+
+	if redisPool != nil {
+		defer func(redisPool *redis.Pool) {
+			_ = redisPool.Close()
+		}(redisPool)
+	}
+
+	if badgerConn != nil {
+		defer func(badgerConn *badger.DB) {
+			_ = badgerConn.Close()
+		}(badgerConn)
+	}
 
 	c.InfoLog.Printf("Listening on port %s", os.Getenv("PORT"))
 	err := srv.ListenAndServe()
