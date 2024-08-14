@@ -678,13 +678,21 @@
   ```
 ### Trying out the Badger cache
 
-
-
-
-
-
-
 ## Sending Email
+### Getting started sending email using SMTP
+- Create files and folders
+  ```shell
+  md celeritas/mailer
+  ni celeritas/mailer/mail.go -type file -Value "package mailer`n`n"
+  ```
+
+
+
+
+
+
+
+
 ## Remember Me & Password Resets
 ## Implementing Celeritas new <myapp>
 ## Where to go from here
