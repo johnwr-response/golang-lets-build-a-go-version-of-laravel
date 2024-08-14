@@ -685,6 +685,13 @@
   md celeritas/mailer
   ni celeritas/mailer/mail.go -type file -Value "package mailer`n`n"
   ```
+### Important Note
+- In the next lecture there is a call to go get a package called `go mail`
+- The author of that package has changed the way it works for the better.
+- This will install a version that matches the one used in this lecture.
+  - Replace `go get github.com/ainsleyclark/go-mail`
+  - With `go get github.com/ainsleyclark/go-mail@v1.0.3`
+- Either use that and update the code for newer version later or update code right away
 
 
 
