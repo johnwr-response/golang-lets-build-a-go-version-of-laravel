@@ -597,6 +597,25 @@
   ```
 ### Connecting to Redis
 ### Completing the rest of the cache functions
+### Testing the cache package
+- MiniRedis - Pure Go Redis server for Go unittests
+  [GitHub](https://github.com/alicebob/miniredis)
+  ```shell
+  cd celeritas
+  go get github.com/alicebob/miniredis/v2
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  ni celeritas/cache/setup_test.go -type file -Value "package cache`n`n"
+  ni celeritas/cache/cache_test.go -type file -Value "package cache`n`n"
+  ```
+- Try it out
+  ```shell
+  go test -cover -v ./celeritas/cache/...
+  ```
+
+
 
 
 

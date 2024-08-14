@@ -140,7 +140,7 @@ func (c *RedisCache) EmptyByMatch(key string) error {
 	}
 
 	for _, k := range keys {
-		err := c.Forget(k)
+		_, err := conn.Do("DEL", k)
 		if err != nil {
 			return err
 		}
@@ -149,7 +149,6 @@ func (c *RedisCache) EmptyByMatch(key string) error {
 	return nil
 }
 
-//goland:noinspection GoUnusedParameter
 func (c *RedisCache) Empty() error {
 	innerKey := fmt.Sprintf("%s:", c.Prefix)
 	conn := c.Conn.Get()
@@ -163,7 +162,7 @@ func (c *RedisCache) Empty() error {
 	}
 
 	for _, k := range keys {
-		err := c.Forget(k)
+		_, err := conn.Do("DEL", k)
 		if err != nil {
 			return err
 		}

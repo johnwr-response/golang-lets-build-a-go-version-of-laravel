@@ -118,3 +118,9 @@ The key features we'll work on in this course include:
   [link](https://github.com/asaskevich/govalidator)
 - Uses the Redigo Go client for Redis
   [link](https://github.com/gomodule/redigo)
+- Uses the MiniRedis Pure Go Redis server for Go unittests
+  [link](https://github.com/alicebob/miniredis)
+  - Indirectly uses gopher-json from same vendor, a simple JSON encoder/decoder for gopher-lua.
+    [go-multiError](https://github.com/alicebob/gopher-json)
+  - Indirectly uses gopher-lua from `yuin`, a VM and compiler for Lua in Go.
+    [gopher-lua](https://github.com/yuin/gopher-lua)
