@@ -629,6 +629,20 @@
   go get github.com/alexedwards/scs/redisstore
   cd ..
   ```
+### CSRF Protection
+- NoSurf - CSRF protection middleware for Go
+  [GitHub](https://github.com/justinas/nosurf)
+  ```shell
+  cd celeritas
+  go get github.com/justinas/nosurf
+  cd ..
+  cd myapp
+  go get github.com/justinas/nosurf
+  cd ..
+  ```
+
+
+
 
 
 

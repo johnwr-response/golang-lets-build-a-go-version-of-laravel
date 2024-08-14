@@ -124,3 +124,5 @@ The key features we'll work on in this course include:
     [go-multiError](https://github.com/alicebob/gopher-json)
   - Indirectly uses gopher-lua from `yuin`, a VM and compiler for Lua in Go.
     [gopher-lua](https://github.com/yuin/gopher-lua)
+- Uses the NoSurf CSRF protection middleware for Go
+  [link](https://github.com/justinas/nosurf)
