@@ -711,6 +711,7 @@
   go get -u github.com/ainsleyclark/go-mail
   cd ..
   ```
+### Connecting Celeritas to our mailer package
 
 
 
