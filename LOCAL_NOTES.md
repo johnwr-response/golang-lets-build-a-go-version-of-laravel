@@ -773,6 +773,7 @@
   ni myapp/middleware/remember.go -type file -Value "package middleware`n`n"
   ```
 ### Updating the auth handlers for remember me functionality
+### Trying out the remember me functionality
 
 
 
