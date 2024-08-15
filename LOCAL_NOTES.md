@@ -801,10 +801,14 @@
   md celeritas/cmd/cli/templates/views
   ```
 
-
-
-
-
-
 ## Implementing Celeritas new <myapp>
+### Starting work on "celeritas new" in the CLI
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/new.go -type file -Value "package main`n`n"
+  ```
+
+
+
+
 ## Where to go from here
