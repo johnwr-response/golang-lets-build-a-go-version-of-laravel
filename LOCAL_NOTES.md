@@ -793,6 +793,7 @@
   ```shell
   myapp/celeritas.exe make mail password-reset
   ```
+### Validating our signed link, and displaying the password reset form
 
 
 
