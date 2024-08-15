@@ -807,6 +807,13 @@
   ```shell
   ni celeritas/cmd/cli/new.go -type file -Value "package main`n`n"
   ```
+### Sanitizing the project name
+- Try it out
+  ```shell
+  make build_cli
+  myapp/celeritas.exe new myapp
+  myapp/celeritas.exe new github.com/something/myotherapp
+  ```
 
 
 

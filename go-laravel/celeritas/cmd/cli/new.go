@@ -7,9 +7,13 @@ import (
 
 func doNew(args2 string) {
 	appName := strings.ToLower(args2)
-	log.Println("appName: ", appName)
 
 	// sanitize the application name (convert url to single word)
+	if strings.Contains(appName, "/") {
+		exploded := strings.SplitAfter(appName, "/")
+		appName = exploded[len(exploded)-1]
+	}
+	log.Println("App name is:", appName)
 
 	// git clone the skeleton application
 
