@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -47,6 +48,15 @@ type Celeritas struct {
 	Cache         cache.Cache
 	Scheduler     *cron.Cron
 	Mail          mailer.Mail
+	Server        Server
+}
+
+type Server struct {
+	Name   string
+	Port   string
+	Folder string
+	Secure bool
+	URL    string
 }
 
 type config struct {
@@ -149,6 +159,24 @@ func (c *Celeritas) New(rootPath string) error {
 			prefix:   os.Getenv("REDIS_PREFIX"),
 		},
 	}
+
+	// Server
+	secure := true
+	if strings.ToLower(os.Getenv("SECURE")) == "false" {
+		secure = false
+	}
+
+	c.Server = Server{
+		Name:   os.Getenv("SERVER_NAME"),
+		Port:   os.Getenv("PORT"),
+		Folder: os.Getenv("SERVER_FOLDER"),
+		Secure: secure,
+	}
+	urlProtocol := "https"
+	if !secure {
+		urlProtocol = "http"
+	}
+	c.Server.URL = fmt.Sprintf("%s://%s:%s%s", urlProtocol, c.Server.Name, c.Server.Port, c.Server.Folder)
 
 	// create a session
 	sess := session.Session{

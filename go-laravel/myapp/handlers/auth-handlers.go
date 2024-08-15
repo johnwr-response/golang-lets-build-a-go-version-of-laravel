@@ -4,6 +4,8 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"fmt"
+	"github.com/johnwr-response/celeritas/mailer"
+	"github.com/johnwr-response/celeritas/urlSigner"
 	"myapp/data"
 	"net/http"
 	"time"
@@ -120,5 +122,54 @@ func (h *Handlers) Forgot(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (h *Handlers) PostForgot(_ http.ResponseWriter, _ *http.Request) {
+func (h *Handlers) PostForgot(w http.ResponseWriter, r *http.Request) {
+	// parse form
+	err := r.ParseForm()
+	if err != nil {
+		h.App.ErrorBadRequest(w)
+		return
+	}
+
+	// verify that supplied email exists
+	var u *data.User
+	email := r.Form.Get("email")
+	u, err = u.GetByEmail(email)
+	if err != nil {
+		h.App.ErrorBadRequest(w)
+		return
+	}
+
+	// create a link to password reset form
+	link := fmt.Sprintf("%s/users/reset-password?email=%s", h.App.Server.URL, email)
+	sign := urlSigner.Signer{
+		Secret: []byte(h.App.EncryptionKey),
+	}
+
+	// sign the link
+	signedLink := sign.GenerateTokenFromString(link)
+	h.App.InfoLog.Println("Signed link is", signedLink)
+
+	// email the message
+	var linkData struct {
+		Link string
+	}
+	linkData.Link = signedLink
+
+	msg := mailer.Message{
+		To:       u.Email,
+		Subject:  "Password reset",
+		Template: "password-reset",
+		Data:     linkData,
+		From:     "admin@example.com",
+		FromName: "Admin",
+	}
+	h.App.Mail.Jobs <- msg
+	res := <-h.App.Mail.Results
+	if res.Error != nil {
+		h.App.ErrorBadRequest(w)
+		return
+	}
+
+	// redirect the user
+	http.Redirect(w, r, "/users/login", http.StatusSeeOther)
 }

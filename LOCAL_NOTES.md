@@ -788,6 +788,11 @@
   md celeritas/urlSigner
   ni celeritas/urlSigner/signer.go -type file -Value "package urlSigner`n`n"
   ```
+### Sending a password reset link via email
+- Create email template
+  ```shell
+  myapp/celeritas.exe make mail password-reset
+  ```
 
 
 
