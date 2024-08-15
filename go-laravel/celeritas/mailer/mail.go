@@ -8,7 +8,6 @@ import (
 	"github.com/vanng822/go-premailer/premailer"
 	smtpmail "github.com/xhit/go-simple-mail/v2"
 	"html/template"
-	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -102,31 +101,32 @@ func (m *Mail) SendUsingAPI(msg Message, transport string) error {
 	case "mailgun":
 		driver, err = drivers.NewMailgun(cfg)
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 	case "sparkpost":
 		driver, err = drivers.NewSparkPost(cfg)
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 	case "sendgrid":
 		driver, err = drivers.NewSendGrid(cfg)
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 	case "postal":
 		driver, err = drivers.NewPostal(cfg)
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 	case "postmark":
 		driver, err = drivers.NewPostmark(cfg)
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 	default:
 		// Should not be reachable
-		log.Fatalf("unknown transport %s", transport)
+		return err
+		//log.Fatalf("unknown transport %s", transport)
 	}
 
 	formattedMessage, err := m.buildHTMLMessage(msg)

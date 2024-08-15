@@ -744,6 +744,26 @@
   make build_cli
   myapp/celeritas.exe make mail test2
   ```
+### Testing mail
+- Adding DockerTest in Celeritas as well
+  ```shell
+  cd celeritas
+  go get github.com/ory/dockertest/v3
+  go get github.com/ory/dockertest/v3/docker
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  md celeritas/mailer/testdata/mail
+  ni celeritas/mailer/testdata/mail/test.html.gohtml -type file
+  ni celeritas/mailer/testdata/mail/test.plain.gohtml -type file
+  ni celeritas/mailer/setup_test.go -type file -Value "package mailer`n`n"
+  ni celeritas/mailer/mail_test.go -type file -Value "package mailer`n`n"
+  ```
+- Run simple test coverage on mailer package
+  ```shell
+  (go test '-coverprofile=coverage.out' ./celeritas/mailer/.) -and (go tool cover '-html=coverage.out')
+  ```
 
 
 
