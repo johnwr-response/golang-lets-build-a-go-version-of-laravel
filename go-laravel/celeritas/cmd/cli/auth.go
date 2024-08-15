@@ -31,7 +31,7 @@ func doAuth() error {
 
 	// TODO: Somewhere down the road, get rid of the `/myapp` hardcoding
 
-	// copy files over
+	// copy models
 	err = copyFileFromTemplate("templates/data/user.go.txt", cel.RootPath+"/myapp/data/user.go")
 	if err != nil {
 		exitGracefully(err)
@@ -40,6 +40,12 @@ func doAuth() error {
 	if err != nil {
 		exitGracefully(err)
 	}
+	err = copyFileFromTemplate("templates/data/remember_token.go.txt", cel.RootPath+"/myapp/data/remember_token.go")
+	if err != nil {
+		exitGracefully(err)
+	}
+
+	// copy middleware
 	err = copyFileFromTemplate("templates/middleware/auth.go.txt", cel.RootPath+"/myapp/middleware/auth.go")
 	if err != nil {
 		exitGracefully(err)
@@ -48,10 +54,44 @@ func doAuth() error {
 	if err != nil {
 		exitGracefully(err)
 	}
+	err = copyFileFromTemplate("templates/middleware/remember.go.txt", cel.RootPath+"/myapp/middleware/remember.go")
+	if err != nil {
+		exitGracefully(err)
+	}
+
+	// copy handlers
+	err = copyFileFromTemplate("templates/handlers/auth-handlers.go.txt", cel.RootPath+"/myapp/handlers/auth-handlers.go")
+	if err != nil {
+		exitGracefully(err)
+	}
+
+	// copy emails
+	err = copyFileFromTemplate("templates/mailer/password-reset.html.gohtml", cel.RootPath+"/myapp/mail/password-reset.html.gohtml")
+	if err != nil {
+		exitGracefully(err)
+	}
+	err = copyFileFromTemplate("templates/mailer/password-reset.plain.gohtml", cel.RootPath+"/myapp/mail/password-reset.plain.gohtml")
+	if err != nil {
+		exitGracefully(err)
+	}
+
+	// copy views
+	err = copyFileFromTemplate("templates/views/login.jet", cel.RootPath+"/myapp/views/login.jet")
+	if err != nil {
+		exitGracefully(err)
+	}
+	err = copyFileFromTemplate("templates/views/forgot.jet", cel.RootPath+"/myapp/views/forgot.jet")
+	if err != nil {
+		exitGracefully(err)
+	}
+	err = copyFileFromTemplate("templates/views/reset-password.jet", cel.RootPath+"/myapp/views/reset-password.jet")
+	if err != nil {
+		exitGracefully(err)
+	}
 
 	color.Yellow("  - users, tokens and remember_tokens migrations created and executed successfully")
 	color.Yellow("  - users and token models created")
-	color.Yellow("  - autgh middleware created")
+	color.Yellow("  - auth middleware created")
 	color.Yellow("")
 	color.Yellow("Don't forget to add user and token models in data/models.com, and to add appropriate middleware to your routes!")
 

@@ -795,6 +795,11 @@
   ```
 ### Validating our signed link, and displaying the password reset form
 ### Resetting the user's password
+### Updating the "make auth" functionality in the Celeritas CLI
+- Create files and folders
+  ```shell
+  md celeritas/cmd/cli/templates/views
+  ```
 
 
 
