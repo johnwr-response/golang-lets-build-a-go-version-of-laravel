@@ -814,6 +814,14 @@
   myapp/celeritas.exe new myapp
   myapp/celeritas.exe new github.com/something/myotherapp
   ```
+### Cloning a (currently non-existent) repository right in Go
+- go-git - A highly extensible Git implementation in pure Go.
+  [GitHub](https://github.com/go-git/go-git)
+  ```shell
+  cd celeritas
+  go get github.com/go-git/go-git/v5
+  cd ..
+  ```
 
 
 

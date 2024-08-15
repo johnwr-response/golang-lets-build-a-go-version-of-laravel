@@ -147,3 +147,6 @@ The key features we'll work on in this course include:
     [goquery](https://github.com/PuerkitoBio/goquery)
 - Uses the go-alone package to handle MAC (Message authentication code) signatures of data
   [link](https://github.com/bwmarrin/go-alone)
+- Uses the go-git package for providing a Git implementation in pure Go
+  [link](https://github.com/go-git/go-git)
+  - WARNING: Indirectly uses a LOT of other packages!
