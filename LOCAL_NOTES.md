@@ -822,6 +822,8 @@
   go get github.com/go-git/go-git/v5
   cd ..
   ```
+### Creating a skeleton application
+- Copied necessary files from myapp and views, and removed unnecessary test code into a new repository to be pushed
 
 
 
