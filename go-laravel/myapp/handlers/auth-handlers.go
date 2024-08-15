@@ -132,9 +132,9 @@ func (h *Handlers) PostForgot(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// verify that supplied email exists
-	var u *data.User
+	var u data.User
 	email := r.Form.Get("email")
-	u, err = u.GetByEmail(email)
+	user, err := u.GetByEmail(email)
 	if err != nil {
 		h.App.ErrorBadRequest(w)
 		return
@@ -157,7 +157,7 @@ func (h *Handlers) PostForgot(w http.ResponseWriter, r *http.Request) {
 	linkData.Link = signedLink
 
 	msg := mailer.Message{
-		To:       u.Email,
+		To:       user.Email,
 		Subject:  "Password reset",
 		Template: "password-reset",
 		Data:     linkData,
@@ -212,4 +212,39 @@ func (h *Handlers) ResetPasswordForm(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+}
+
+func (h *Handlers) PostResetPassword(w http.ResponseWriter, r *http.Request) {
+	// parse the form
+	err := r.ParseForm()
+	if err != nil {
+		h.App.Error500(w)
+		return
+	}
+
+	// get and decrypt the email
+	email, err := h.decrypt(r.Form.Get("email"))
+	if err != nil {
+		h.App.Error500(w)
+		return
+	}
+
+	// get the user
+	var u data.User
+	user, err := u.GetByEmail(email)
+	if err != nil {
+		h.App.Error500(w)
+		return
+	}
+
+	// reset the password
+	err = user.ResetPassword(user.ID, r.Form.Get("password"))
+	if err != nil {
+		h.App.Error500(w)
+		return
+	}
+
+	// redirect
+	h.App.Session.Put(r.Context(), "flash", "Password reset. You can now log in using the new password.")
+	http.Redirect(w, r, "/users/login", http.StatusSeeOther)
 }
