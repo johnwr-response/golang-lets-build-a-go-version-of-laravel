@@ -774,6 +774,7 @@
   ```
 ### Updating the auth handlers for remember me functionality
 ### Trying out the remember me functionality
+### Password resets
 
 
 
