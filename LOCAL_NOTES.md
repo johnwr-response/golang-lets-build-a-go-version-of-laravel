@@ -732,7 +732,18 @@
   - [Sendmail](`localhost:1025`)
   - [Web interface](http://localhost:8025/ "MailHog web interface")
 ### Sending mail using an API
-
+### Adding "make mail" to the CLI
+- Create files and folders
+  ```shell
+  md celeritas/cmd/cli/templates/mailer
+  ni celeritas/cmd/cli/templates/mailer/mail.html.gohtml -type file
+  ni celeritas/cmd/cli/templates/mailer/mail.plain.gohtml -type file
+  ```
+- Try it out
+  ```shell
+  make build_cli
+  myapp/celeritas.exe make mail test2
+  ```
 
 
 

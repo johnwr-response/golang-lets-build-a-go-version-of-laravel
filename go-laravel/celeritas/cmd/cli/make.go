@@ -88,6 +88,22 @@ func doMake(arg2, arg3 string) error {
 		if err != nil {
 			exitGracefully(err)
 		}
+	case "mail":
+		if arg3 == "" {
+			exitGracefully(errors.New("you must give the mail template a name"))
+		}
+		htmlMail := fmt.Sprintf("%s/mail/%s.html.gohtml", cel.RootPath, strings.ToLower(arg3))
+		plainMail := fmt.Sprintf("%s/mail/%s.plain.gohtml", cel.RootPath, strings.ToLower(arg3))
+
+		err := copyFileFromTemplate("templates/mailer/mail.html.gohtml", htmlMail)
+		if err != nil {
+			exitGracefully(err)
+		}
+		err = copyFileFromTemplate("templates/mailer/mail.plain.gohtml", plainMail)
+		if err != nil {
+			exitGracefully(err)
+		}
+
 	case "session-store":
 		err := doSessionTable()
 		if err != nil {

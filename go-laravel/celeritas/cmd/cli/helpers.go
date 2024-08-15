@@ -68,6 +68,7 @@ func showHelp() {
     make model <name>   - creates a new model in the data directory
     make session-store  - creates a table in the database as a session store
     make key            - creates a new 32 characters encryption key
+    make mail <name>    - creates two starter mail templates from <name> in the mail directory
 
     `)
 }
