@@ -772,6 +772,7 @@
   ni myapp/data/remember_token.go -type file -Value "package data`n`n"
   ni myapp/middleware/remember.go -type file -Value "package middleware`n`n"
   ```
+### Updating the auth handlers for remember me functionality
 
 
 

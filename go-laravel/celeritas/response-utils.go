@@ -93,6 +93,9 @@ func (c *Celeritas) ErrorUnauthorized(w http.ResponseWriter) {
 func (c *Celeritas) ErrorForbidden(w http.ResponseWriter) {
 	c.ErrorStatus(w, http.StatusForbidden)
 }
+func (c *Celeritas) ErrorBadRequest(w http.ResponseWriter) {
+	c.ErrorStatus(w, http.StatusBadRequest)
+}
 
 func (c *Celeritas) ErrorStatus(w http.ResponseWriter, status int) {
 	http.Error(w, http.StatusText(status), status)
