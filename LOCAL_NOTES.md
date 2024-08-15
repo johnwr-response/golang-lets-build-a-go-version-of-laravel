@@ -775,7 +775,19 @@
 ### Updating the auth handlers for remember me functionality
 ### Trying out the remember me functionality
 ### Password resets
-
+### Handling a password reset request
+- go-alone - A simple to use, high-performance, Go (golang) MAC signer.
+  [GitHub](https://github.com/bwmarrin/go-alone)
+  ```shell
+  cd celeritas
+  go get github.com/bwmarrin/go-alone
+  cd ..
+  ```
+- Create files and folders
+  ```shell
+  md celeritas/urlSigner
+  ni celeritas/urlSigner/signer.go -type file -Value "package urlSigner`n`n"
+  ```
 
 
 

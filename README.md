@@ -145,3 +145,5 @@ The key features we'll work on in this course include:
     [`Cascadia`](https://github.com/andybalholm/cascadia)
   - Indirectly uses `goquery` from `PuerkitoBio` to provide a syntax and a set of features similar to jQuery.
     [goquery](https://github.com/PuerkitoBio/goquery)
+- Uses the go-alone package to handle MAC (Message authentication code) signatures of data
+  [link](https://github.com/bwmarrin/go-alone)

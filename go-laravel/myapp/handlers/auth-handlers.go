@@ -119,3 +119,6 @@ func (h *Handlers) Forgot(w http.ResponseWriter, r *http.Request) {
 		h.App.Error500(w)
 	}
 }
+
+func (h *Handlers) PostForgot(_ http.ResponseWriter, _ *http.Request) {
+}
