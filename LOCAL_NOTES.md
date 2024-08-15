@@ -765,13 +765,19 @@
   (go test '-coverprofile=coverage.out' ./celeritas/mailer/.) -and (go tool cover '-html=coverage.out')
   ```
 
-
-
-
-
-
-
-
 ## Remember Me & Password Resets
+### Setting up models and middleware for "remember me" functionality
+- Create files and folders
+  ```shell
+  ni myapp/data/remember_token.go -type file -Value "package data`n`n"
+  ni myapp/middleware/remember.go -type file -Value "package middleware`n`n"
+  ```
+
+
+
+
+
+
+
 ## Implementing Celeritas new <myapp>
 ## Where to go from here
