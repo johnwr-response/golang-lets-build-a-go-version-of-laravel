@@ -862,6 +862,7 @@
   cd dist
   ./celeritas.exe new test
   ```
+### Creating the correct Makefile
 
 
 

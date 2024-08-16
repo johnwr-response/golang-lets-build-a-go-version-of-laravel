@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"github.com/fatih/color"
 	"github.com/go-git/go-git/v5"
+	"io"
 	"log"
 	"os"
+	"runtime"
 	"strings"
 )
 
@@ -53,6 +55,35 @@ func doNew(args2 string) {
 	}
 
 	// create a makefile
+	color.Yellow("\tCreating Makefile file...")
+	var sourceFile string
+	if runtime.GOOS == "windows" {
+		sourceFile = "Makefile.windows"
+	} else {
+		sourceFile = "Makefile.mac"
+	}
+	source, err := os.Open(fmt.Sprintf("./%s/%s", appName, sourceFile))
+	if err != nil {
+		exitGracefully(err)
+	}
+	defer func(source *os.File) {
+		err = source.Close()
+	}(source)
+	destination, err := os.Create(fmt.Sprintf("./%s/Makefile", appName))
+	if err != nil {
+		exitGracefully(err)
+	}
+	defer func(destination *os.File) {
+		err = destination.Close()
+	}(destination)
+	_, err = io.Copy(destination, source)
+	if err != nil {
+		exitGracefully(err)
+	}
+	_ = source.Close()
+
+	_ = os.Remove(fmt.Sprintf("./%s/Makefile.mac", appName))
+	_ = os.Remove(fmt.Sprintf("./%s/Makefile.windows", appName))
 
 	// update the go.mod file
 
