@@ -897,7 +897,18 @@
   git branch -M main
   git push -u origin main
   ```
+### Trying out our make new functionality
+- Try it out
+  ```shell
+  # in celeritas
+  make dist_cli
+  md ../testApp
+  cp dist/celeritas.exe ../testApp/.
 
+  # in testApp
+  ./celeritas.exe help
+  ./celeritas.exe new coolapp
+  ```
 
 
 ## Where to go from here
