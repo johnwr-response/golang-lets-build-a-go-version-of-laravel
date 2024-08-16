@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"os/exec"
 	"runtime"
 	"strings"
 )
@@ -104,7 +105,19 @@ func doNew(args2 string) {
 
 	// update the existing .go files with correct name/imports
 	color.Yellow("\tUpdating source files...")
+	err = os.Chdir(fmt.Sprintf("./%s", appName))
+	if err != nil {
+		exitGracefully(err)
+	}
 	updateSource()
 
 	// run go mod tidy in the project directory
+	color.Yellow("\tRunning go mod tidy...")
+	cmd := exec.Command("go", "mod", "tidy")
+	err = cmd.Start()
+	if err != nil {
+		exitGracefully(err)
+	}
+	color.Green(fmt.Sprintf("Done building %s", appURL))
+	color.Green(fmt.Sprintf("Now, go build something awesome..."))
 }

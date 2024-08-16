@@ -869,6 +869,14 @@
   ni celeritas/cmd/cli/templates/go.mod.txt -type file
   ```
 ### Update imports in .go files
+### Running go mod tidy
+- Remove files from last test and try it out again
+  ```shell
+  make dist_cli
+  cd dist
+  ./celeritas.exe new github.com/tsawler/newproject
+  rm ./dist/newproject -r -force
+  ```
 
 
 
