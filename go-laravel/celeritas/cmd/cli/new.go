@@ -21,8 +21,7 @@ func doNew(args2 string) {
 	// git clone the skeleton application
 	color.Green("\tCloning repository...")
 	_, err := git.PlainClone("./"+appName, false, &git.CloneOptions{
-		//URL:      "git@github.com/johnwr-response/golang-lets-build-a-go-version-of-laravel.git",
-		URL:      "git@github.com/tsawler/celeritas-app.git",
+		URL:      "https://github.com/john-wraa/celeritas-app.git",
 		Progress: os.Stdout,
 		Depth:    1,
 	})

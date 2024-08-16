@@ -51,6 +51,10 @@ stop_compose:
 build_cli:
 	@go build -o ./myapp/${CLI_NAME} ./celeritas/cmd/cli
 
+## build_cli: builds the command line tool dist directory
+dist_cli:
+	@go build -o ./dist/${CLI_NAME} ./celeritas/cmd/cli
+
 test: test_myapp test_celeritas
 	@echo All tests run!
 

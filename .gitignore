@@ -13,6 +13,7 @@
 
 # Other folders
 tmp/
+dist/
 
 # Mounted databases in Docker
 /*/docker/db-data/*

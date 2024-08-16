@@ -843,6 +843,13 @@
   git branch -M main
   git push -u origin main
   ```
+### Trying out the code that clones a remote GitHub repository
+- Try it out
+  ```shell
+  make dist_cli
+  cd dist
+  ./celeritas.exe new test
+  ```
 
 
 
