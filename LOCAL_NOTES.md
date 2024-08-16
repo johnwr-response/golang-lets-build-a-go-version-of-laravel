@@ -910,5 +910,6 @@
   ./celeritas.exe new coolapp
   ```
 
-
 ## Where to go from here
+### Where to go from here
+- [Let's Build a Go version of Laravel: Part Two](https://www.udemy.com/course/lets-build-a-go-version-of-laravel-part-two/)
