@@ -863,6 +863,11 @@
   ./celeritas.exe new test
   ```
 ### Creating the correct Makefile
+### Update go.mod
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/templates/go.mod.txt -type file
+  ```
 
 
 
