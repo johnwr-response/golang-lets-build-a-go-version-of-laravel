@@ -877,6 +877,26 @@
   ./celeritas.exe new github.com/tsawler/newproject
   rm ./dist/newproject -r -force
   ```
+### Pushing our Celeritas project to GitHub
+- Create the new git repository for the Celeritas app
+- Copy all files and folders in `./Celeritas` folder into a new folder and run
+  ```shell
+  git init
+  git add .
+  git commit -m "Initial entry"
+  ```
+- Go to GitHub and create a new public repository without initializing it
+- Make sure you have the GitHub cli installed, and logged in
+  ```powershell
+  winget install --id GitHub.cli
+  gh auth login
+  ```
+- Set the remote and push the new repository
+  ```shell
+  git remote add origin https://github.com/john-wraa/celeritas.git
+  git branch -M main
+  git push -u origin main
+  ```
 
 
 
