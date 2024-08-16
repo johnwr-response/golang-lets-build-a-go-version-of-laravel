@@ -850,6 +850,18 @@
   cd dist
   ./celeritas.exe new test
   ```
+### Removing the .git directory and creating a .env file
+- Create files and folders
+  ```shell
+  ni celeritas/cmd/cli/templates/env.txt -type file
+  ```
+- Remove files from last test and try it out again
+  ```shell
+  rm ./dist/test -r -force
+  make dist_cli
+  cd dist
+  ./celeritas.exe new test
+  ```
 
 
 
