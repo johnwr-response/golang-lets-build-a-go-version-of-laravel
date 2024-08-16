@@ -103,6 +103,8 @@ func doNew(args2 string) {
 	}
 
 	// update the existing .go files with correct name/imports
+	color.Yellow("\tUpdating source files...")
+	updateSource()
 
 	// run go mod tidy in the project directory
 }

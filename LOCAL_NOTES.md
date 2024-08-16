@@ -868,7 +868,7 @@
   ```shell
   ni celeritas/cmd/cli/templates/go.mod.txt -type file
   ```
-
+### Update imports in .go files
 
 
 
